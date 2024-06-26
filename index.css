@@ -15,10 +15,8 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  /* height: 120px; */
   display: flex;
   justify-content: space-evenly;
-  /* align-items: center; */
   margin-top: 50px;
 }
 
@@ -42,7 +40,6 @@
 
 .nav-bar ul li a:hover {
   color: #44f1a6;  
-  border-bottom: 2px solid #44f1a6;
   transition: 0.1s linear ;
 }
 
