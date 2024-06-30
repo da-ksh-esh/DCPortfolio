@@ -9,3 +9,7 @@ function myFunction() {
     document.getElementById('nav-res-ext4').style.display = 'block'
 }
 
+function topFunction() {
+  document.documentElement.scrollTop = 0;
+}
+
