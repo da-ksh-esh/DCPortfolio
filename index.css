@@ -48,6 +48,15 @@
   display: none;
 }
 
+.about-heading,
+.skills-heading,
+.projects-heading,
+.contact-heading{
+  color: #44f1a6;
+  font-family: ubuntu;
+  background-color: rgb(19, 18, 18);
+}
+
 .main-about{
   background-color: rgb(19, 18, 18);
   border-radius: 10px;
@@ -90,15 +99,6 @@
   width: 80%;
   margin: 30px auto;
   height: 350px;
-}
-
-.about-heading,
-.skills-heading,
-.projects-heading,
-.contact-heading{
-  color: #44f1a6;
-  font-family: ubuntu;
-  background-color: rgb(19, 18, 18);
 }
 
 .go-to-top{
