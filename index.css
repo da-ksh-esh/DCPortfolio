@@ -34,7 +34,7 @@
   text-decoration: none;
   color: white;
   font-family: "PT Mono", monospace;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 2px;
   text-align: center;
   text-transform: uppercase;
@@ -48,21 +48,10 @@
   display: none;
 }
 
-.about-heading,
-.skills-heading,
-.projects-heading,
-.contact-heading{
-  color: #44f1a6;
-  font-family: ubuntu;
-  background-color: rgb(19, 18, 18);
-}
-
 .main-about{
-  background-color: rgb(19, 18, 18);
   border-radius: 10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
   width: 80%;
   margin: 30px auto;
   height: 350px;
@@ -101,6 +90,54 @@
   height: 350px;
 }
 
+
+.about-heading,
+.skills-heading,
+.projects-heading,
+.contact-heading{
+  color: #44f1a6;
+  font-family: ubuntu;
+  font-size: 27px;
+  width: 242px;
+}
+
+.details-heading {
+  color: white;
+  font-family: monospace;
+  width: 210px;
+}
+
+.about-container-1 {
+  height: 400px;
+  width: 50%;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container-2 {
+  height: 400px;
+  width: 50%;
+  /* background-color: aqua; */
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons {
+  margin-top: 10px;
+  font-size: 25px;
+  width: 250px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.social-icons a {
+  color: white;
+}
+
 .go-to-top{
   height: 50px;
   display: flex;
@@ -116,9 +153,10 @@
   font-size: 16px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   #nav-ul{
     margin-top: 35px;
+    margin-bottom: 85px;
   }
 
   #nav-res-ext1, 
@@ -144,6 +182,12 @@
     color: #44f1a6;
     font-size: 25px;
     border: 0;
+  }
+
+  #about-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
   }
   
 }
