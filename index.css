@@ -188,6 +188,10 @@
     align-items: center;
     text-align: center;
   }
+
+  .details-heading {
+    font-size: 13px;
+  }
   
 }
 
