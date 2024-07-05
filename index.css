@@ -98,7 +98,6 @@
   color: #44f1a6;
   font-family: ubuntu;
   font-size: 27px;
-  width: 242px;
 }
 
 .details-heading {
@@ -156,7 +155,7 @@
 @media only screen and (max-width: 750px) {
   #nav-ul{
     margin-top: 35px;
-    margin-bottom: 120px;
+    margin-bottom: 150px;
   }
 
   #nav-res-ext1, 
