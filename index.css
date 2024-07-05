@@ -101,6 +101,7 @@
 }
 
 .details-heading {
+  text-align: center;
   color: white;
   font-family: monospace;
   width: 240px;
