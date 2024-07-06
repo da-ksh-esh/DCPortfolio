@@ -53,6 +53,7 @@
   width: 80%;
   margin: 40px auto;
   height: 400px;
+  margin-top: 100px;
 }
 
 .main-skills{
@@ -102,7 +103,7 @@
   width: 30%;
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .about-container-0 {
