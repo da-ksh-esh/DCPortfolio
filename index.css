@@ -59,19 +59,16 @@
 .main-skills{
   border-radius: 10px;
   width: 80%;
-  margin: 100px auto 40px;
+  margin: 50px auto 0;
   height: 250px;
 }
 
 .main-projects{
-  background-color: rgb(19, 18, 18);
+  /* background-color: white; */
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 80%;
-  margin: 40px auto;
-  height: 350px;
+  margin: 70px auto 40px;
+  height: 400px;
 }
 
 .main-contact{
@@ -85,7 +82,6 @@
   height: 350px;
 }
 
-.projects-heading,
 .contact-heading{
   color: #44f1a6;
   font-family: ubuntu;
@@ -100,10 +96,8 @@
 }
 
 .about-container {
-  width: 30%;
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
 }
 
 .about-container-0 {
@@ -149,14 +143,14 @@
 }
 
 .about-heading,
-.skills-heading {
+.skills-heading,
+.projects-heading {
   color: #44f1a6;
   font-family: ubuntu;
   font-size: 25px;
 }
 
 .skills-container {
-  width: 30%; 
   display: flex;
   justify-content: center;
 }
@@ -183,6 +177,46 @@
   margin-top: 25px;
 }
 
+.projects-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.projects-container-0 {
+  display: flex;
+  height: 270px;
+}
+
+.projects-container-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  /* background-color: red; */
+  width: 50%;
+}
+
+.projects-container-2 img {
+  padding: 5px;
+  width: 350px;
+  border-radius: 10px;
+}
+
+.projects-container-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: ubuntu;
+  color:#44f1a6;
+  margin:0 10px 0 10px;
+  /* background-color: green; */
+  width: 50%;
+}
+
 .go-to-top{
   height: 50px;
   display: flex;
@@ -196,6 +230,19 @@
   font-weight: 700;
   text-decoration: none;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 900px) {
+  .projects-container-0 {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .projects-container-3 {
+    margin-top: 15px;
+    width: 90%;
+  }
+  
 }
 
 @media only screen and (max-width: 750px) {
@@ -241,13 +288,23 @@
     font-size: 13px;
   }
 
-  .about-container,
+  .about-container {
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  .main-skills {
+    margin-top: 140px;
+  }
+
+  .projects-container
   .skills-container {
     width: 100%;
   }
 
   .about-heading,
-  .skills-heading {
+  .skills-heading,
+  .projects-heading {
     font-size: 22px;
   }
   
