@@ -67,7 +67,7 @@
   border-radius: 10px;
   width: 80%;
   margin: 70px auto 40px;
-  height: 350px;
+  height: 600px;
 }
 
 .main-contact{
@@ -176,7 +176,8 @@
   color: wheat;
 }
 
-.projects-container-0 {
+.projects-container-0,
+.projects-container-1 {
   display: flex;
   height: 270px;
 }
@@ -244,6 +245,7 @@
 }
 
 @media only screen and (max-width: 900px) {
+  .projects-container-1,
   .projects-container-0 {
     align-items: center;
     flex-direction: column;
@@ -312,7 +314,11 @@
   }
 
   .main-projects {
-    height: 400px;
+    height: 800px;
+  }
+
+  .projects-container-1 {
+    margin-top: 130px;
   }
 
   .projects-container {
