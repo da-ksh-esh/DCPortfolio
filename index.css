@@ -64,28 +64,17 @@
 }
 
 .main-projects{
-  /* background-color: white; */
   border-radius: 10px;
   width: 80%;
   margin: 70px auto 40px;
-  height: 400px;
-}
-
-.main-contact{
-  background-color: rgb(19, 18, 18);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  margin: 40px auto;
   height: 350px;
 }
 
-.contact-heading{
-  color: #44f1a6;
-  font-family: ubuntu;
-  font-size: 27px;
+.main-contact{
+  border-radius: 10px;
+  width: 80%;
+  margin: 40px auto;
+  height: 200px;
 }
 
 .details-heading {
@@ -109,7 +98,6 @@
 .about-container-1 {
   height: 350px;
   width: 50%;
-  /* background-color: white; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,14 +108,13 @@
 .about-container-2 {
   height: 350px;
   width: 50%;
-  /* background-color: aqua; */
   display: flex ;
   justify-content: center;
   align-items: center;
 }
 
 .about-container-2 img {
-  height: 350px;
+  height: 300px;
 }
 
 .social-icons {
@@ -138,13 +125,15 @@
   justify-content: space-evenly;
 }
 
+.contact-icons a,
 .social-icons a {
   color: white;
 }
 
 .about-heading,
 .skills-heading,
-.projects-heading {
+.projects-heading,
+.contact-heading{
   color: #44f1a6;
   font-family: ubuntu;
   font-size: 25px;
@@ -180,7 +169,11 @@
 .projects-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+}
+
+.projects-container-span {
+  font-size: 18px;
+  color: wheat;
 }
 
 .projects-container-0 {
@@ -194,13 +187,12 @@
   align-items: center;
   color: white;
   border-radius: 10px;
-  /* background-color: red; */
   width: 50%;
 }
 
 .projects-container-2 img {
   padding: 5px;
-  width: 350px;
+  width: 330px;
   border-radius: 10px;
 }
 
@@ -208,13 +200,32 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   font-family: ubuntu;
   color:#44f1a6;
   margin:0 10px 0 10px;
   /* background-color: green; */
-  width: 50%;
+  width: 40%;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container-1 {
+  height: 100px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: ubuntu;
+}
+
+.contact-icons {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .go-to-top{
@@ -241,6 +252,8 @@
   .projects-container-3 {
     margin-top: 15px;
     width: 90%;
+    align-items: center;
+    text-align: center;
   }
   
 }
@@ -293,18 +306,27 @@
     width: 100%;
   }
 
-  .main-skills {
-    margin-top: 140px;
+  .main-skills,
+  .main-contact {
+    margin-top: 130px;
   }
 
-  .projects-container
-  .skills-container {
-    width: 100%;
+  .main-projects {
+    height: 400px;
+  }
+
+  .projects-container {
+    margin-bottom: 20px;
+  }
+
+  .contact-container-1 h3 {
+    font-size: 16px;
   }
 
   .about-heading,
   .skills-heading,
-  .projects-heading {
+  .projects-heading,
+  .contact-heading {
     font-size: 22px;
   }
   
