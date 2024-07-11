@@ -81,7 +81,7 @@
   text-align: center;
   color: white;
   font-family: monospace;
-  width: 240px;
+  width: 210px;
 }
 
 .about-container {
@@ -137,6 +137,28 @@
   color: #44f1a6;
   font-family: ubuntu;
   font-size: 25px;
+}
+
+.name-heading {
+  width: 226px;
+  color: #44f1a6;
+  font-family: ubuntu;
+  font-size: 25px;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(16), 
+  cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+  50% {
+      border-color: transparent;
+  }
+}
+
+@keyframes typing {
+  from    {width: 0;}
 }
 
 .skills-container {
@@ -308,9 +330,12 @@
     width: 100%;
   }
 
-  .main-skills,
-  .main-contact {
+  .main-skills {
     margin-top: 130px;
+  }
+  
+  .main-contact {
+    margin-top: 80px;
   }
 
   .main-projects {
