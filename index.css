@@ -20,6 +20,7 @@ body {
   padding: 0;
   overflow: hidden;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   margin-top: 50px;
 }
@@ -106,6 +107,17 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.resume-btn {
+  color: white;
+  font-family: monospace;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.resume-btn:hover {
+  color: #44f1a6;
 }
 
 .about-container-2 {
@@ -302,7 +314,7 @@ body {
   #hidden{
     display:inline-flex;
     color: #44f1a6;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
     border: 0;
   }
