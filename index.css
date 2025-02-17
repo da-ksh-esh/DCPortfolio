@@ -244,6 +244,31 @@ body {
   justify-content: space-evenly;
 }
 
+.contact-icons i {
+  color: black;
+}
+
+.contact-icon-1,
+.contact-icon-2,
+.contact-icon-3,
+.contact-icon-4,
+.contact-icon-5,
+.contact-icon-6 {
+  width: 41px;
+  height: 41px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.style:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+    transition: 0.05s ease-in-out;
+}
+
 .name-heading {
   width: 226px;
   color: #44f1a6;
