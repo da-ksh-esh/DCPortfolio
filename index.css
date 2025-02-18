@@ -219,8 +219,18 @@ body {
   font-family: ubuntu;
   color:#44f1a6;
   margin:0 10px 0 10px;
-  /* background-color: green; */
   width: 40%;
+}
+
+.more-projects{
+  font-family: ubuntu;
+  font-size: 14px;
+  text-align: center;
+}
+
+.more-projects a{
+  text-decoration: none;
+  color: white;
 }
 
 .contact-container {
@@ -244,8 +254,9 @@ body {
   justify-content: space-evenly;
 }
 
-.contact-icons i {
-  color: black;
+.contact-icons a {
+  color: white;
+  text-decoration: none;
 }
 
 .contact-icon-1,
@@ -256,7 +267,9 @@ body {
 .contact-icon-6 {
   width: 41px;
   height: 41px;
-  background-color: white;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -314,7 +327,6 @@ body {
   }
 
   .projects-container-3 {
-    margin-top: 15px;
     width: 90%;
     align-items: center;
     text-align: center;
@@ -388,6 +400,10 @@ body {
 
   .projects-container {
     margin-bottom: 20px;
+  }
+
+  .more-projects {
+    margin-top: 80px;
   }
 
   .contact-container-1 h3 {
