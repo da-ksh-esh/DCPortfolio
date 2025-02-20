@@ -319,6 +319,16 @@ body {
   font-size: 16px;
 }
 
+@media only screen and (min-width: 901px) {
+  .projects-container-2 img {
+    transition: width 0.2s ease-in-out;
+  }
+  
+  .projects-container-2 img:hover {
+    width: 375px;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .projects-container-1,
   .projects-container-0 {
