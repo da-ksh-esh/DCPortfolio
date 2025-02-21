@@ -33,3 +33,20 @@ window.addEventListener("resize", function () {
       hiddenPortfolio.style.display = "inline-flex"; // Show "PORTFOLIO" only in small screens
   }
 });
+
+window.onscroll = function () {
+    toggleBackToTopButton();
+};
+
+function toggleBackToTopButton() {
+    const button = document.getElementById("backToTop");
+    if (document.documentElement.scrollTop > 200) {
+        button.style.display = "block";
+    } else {
+        button.style.display = "none";
+    }
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
