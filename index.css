@@ -325,7 +325,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   animation: typing 2s steps(16),
-    cursor .4s step-end infinite alternate;
+  cursor .4s step-end infinite alternate;
 }
 
 @keyframes cursor {
@@ -395,12 +395,11 @@ body {
     margin-top: 35px;
     font-weight: 600;
   }
-
   #nav-res-ext1,
   #nav-res-ext2,
   #nav-res-ext3,
   #nav-res-ext4 {
-    font-size: 16px;
+    font-size: 14px;
     display: none;
     letter-spacing: 0px;
   }
