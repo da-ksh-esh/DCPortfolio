@@ -50,7 +50,6 @@ h2 {
     font-family: ubuntu;
 }
 
-/* Navigation buttons */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -85,4 +84,27 @@ h2 {
     border-radius: 20px;
     font-size: 17px;
     font-weight: bold;
+}
+
+.backToMain {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.backToMain a{
+    text-decoration: none;
+    color: white;
+    font-family: ubuntu;
+}
+
+.backToMain a:hover {
+    color: #44f1a6;
+}
+
+@media only screen and (max-width: 750px){
+    .slideshow-container {
+        width: 90%;
+        margin-top: 50%;
+    }
 }
