@@ -20,6 +20,11 @@ body {
   color: black;
 }
 
+.light-mode .nav-bar-container {
+  background: rgba(0, 0, 0, 0.08);   /* darker glass */
+  color: #111;                       /* darker text for contrast */
+}
+
 .light-mode h1,
 .light-mode h2,
 .light-mode h3,
@@ -60,13 +65,19 @@ body {
 
 .nav-bar-container {
   list-style-type: none;
-  margin: 0;
   padding: 0;
   overflow: visible;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   margin-top: 50px;
+  height: 70px;
+  width: 80%;
+  margin: 40px auto;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 #hidden {
@@ -219,7 +230,7 @@ body {
 
 .skills-container-1 {
   display: flex;
-  justify-content: space-evenly;
+justify-content: space-evenly;
 }
 
 .skills-container-1 ul {
@@ -239,12 +250,11 @@ body {
   flex: 1 1 160px; 
   margin-top: 25px;
   min-width: 160px;
-  padding: 12px 20px;
+  padding: 12px 15px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  /* gap: 10px; */
   justify-content: flex-start;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -255,8 +265,8 @@ body {
 }
 
 body.light-mode .skills-container-1-skill {
-  background: rgba(156, 152, 152, 0.08);   /* darker glass */
-  color: #111;                       /* darker text for contrast */
+  background: rgba(156, 152, 152, 0.08); 
+  color: #111;           
 }
 
 .projects-container {
@@ -273,7 +283,7 @@ body.light-mode .skills-container-1-skill {
 .projects-container-0,
 .projects-container-1 {
   display: flex;
-  height: 270px;
+  height: 260px;
 }
 
 .projects-container-2 {
@@ -443,6 +453,10 @@ body.light-mode .skills-container-1-skill {
 }
 
 @media only screen and (max-width: 750px) {
+  .nav-bar-container {
+    width: 90%;
+  }
+
   #nav-ul {
     margin-top: 35px;
     font-weight: 600;
@@ -533,6 +547,11 @@ body.light-mode .skills-container-1-skill {
     min-width: 145px;
     max-width: none;
     width: 80%;
+  }
+
+  .skills-container-1 {
+    justify-content: center;
+    gap: 20px;
   }
 
 }

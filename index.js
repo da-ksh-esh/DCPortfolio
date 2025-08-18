@@ -1,7 +1,7 @@
 function myFunction() {
     let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
     let icon = document.getElementById("icon");
-    let hiddenPortfolio = document.getElementById("hidden"); // "PORTFOLIO" heading
+    let hiddenPortfolio = document.getElementById("hidden"); 
 
     let isOpen = menuItems[0].style.display === "block";
 
@@ -12,29 +12,28 @@ function myFunction() {
     hiddenPortfolio.style.display = isOpen ? "inline-flex" : "none";
 
     icon.innerHTML = isOpen 
-        ? '<i class="fa-solid fa-bars-staggered"></i>'  // Show hamburger menu
-        : '<i class="fa-solid fa-times"></i>';         // Show close icon
+        ? '<i class="fa-solid fa-bars-staggered"></i>'  
+        : '<i class="fa-solid fa-times"></i>';         
 }
 
-// **Reset Navbar Visibility When Resizing**
+
 window.addEventListener("resize", function () {
     let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
     let hiddenPortfolio = document.getElementById("hidden");
 
     if (window.innerWidth > 750) {
         menuItems.forEach(item => {
-            item.style.display = "block";  // Ensure they are visible on larger screens
+            item.style.display = "block";
         });
-        hiddenPortfolio.style.display = "none"; // Hide "PORTFOLIO" heading
+        hiddenPortfolio.style.display = "none";
     } else {
         menuItems.forEach(item => {
-            item.style.display = "none";  // Hide them again for smaller screens
+            item.style.display = "none";
         });
-        hiddenPortfolio.style.display = "inline-flex"; // Show "PORTFOLIO" only in small screens
+        hiddenPortfolio.style.display = "inline-flex";
     }
 });
 
-// **Back-to-Top Button Visibility**
 window.onscroll = function () {
     toggleBackToTopButton();
 };
@@ -52,12 +51,12 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// **Dark Mode Toggle (Default: Dark Mode)**
+
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     const body = document.body;
 
-    // **Set Dark Mode as Default**
+
     if (localStorage.getItem("theme") !== "light") {
         body.classList.add("dark-mode");
         themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
@@ -66,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
         themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
     }
 
-    // **Toggle Dark/Light Mode**
     themeToggle.addEventListener("click", () => {
         if (body.classList.contains("light-mode")) {
             body.classList.replace("light-mode", "dark-mode");
