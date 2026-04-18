@@ -12,11 +12,8 @@
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <script src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script defer src="index.js"></script>
     <title>Dakshesh Chauhan | Portfolio</title>
     <script
       src="https://kit.fontawesome.com/653f96fbfb.js"
@@ -27,18 +24,18 @@
     <header>
       <nav class="nav-bar" id="nav-container">
         <ul class="nav-bar-container" id="nav-ul">
-          <li><a id="hidden" href="/Portfolio/index.html">Portfolio</a></li>
+          <li><a id="hidden" href="index.html">Portfolio</a></li>
           <li><a id="nav-res-ext1" href="#about-section">About</a></li>
           <li><a id="nav-res-ext2" href="#skills-section">Skills</a></li>
           <li><a id="nav-res-ext3" href="#projects-section">Projects</a></li>
           <li><a id="nav-res-ext4" href="#contact-section">Contact</a></li>
           <li>
-            <button id="theme-toggle" class="mode-toggle">
+            <button id="theme-toggle" class="mode-toggle" aria-label="Toggle Theme">
               <i class="fa-solid fa-moon"></i>
             </button>
           </li>          
           <li>
-            <a href="#" id="icon" class="collapse-icon" onclick="myFunction()">
+            <a href="javascript:void(0);" id="icon" class="collapse-icon">
               <i class="fa-solid fa-bars-staggered"></i>
             </a>
           </li>
@@ -47,30 +44,30 @@
     </header>
     <section id="about-section" class="main-about reveal">
       <div class="about-container">
-        <h2 class="about-heading">ABOUT</h3>
+        <h2 class="about-heading">ABOUT</h2>
       </div>
       <div class="about-container-0">
         <div class="about-container-1">
           <h2 class="name-heading">Dakshesh Chauhan</h2>
           <h3 class="details-heading">[SIT Pune Btech. AIML'28]</h3>
           <div class="social-icons">
-            <a href="mailto:chauhan06dakshesh@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
-            <a href="https://github.com/da-ksh-esh" target="_blank"><i class="fa-brands fa-github-alt"></i></a>
-            <a href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://discord.com/users/776767307539152906" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://www.instagram.com/da_ksh_esh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.x.com/da_ksh_esh" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="mailto:chauhan06dakshesh@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+            <a href="https://github.com/da-ksh-esh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
+            <a href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://discord.com/users/776767307539152906" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://www.instagram.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.x.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
           </div>
-          <a href="DC Resume.pdf" download class="resume-btn">>> Resume <<</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="resume-btn">>> Resume <<</a>
         </div>  
         <div class="about-container-2">
-          <img id="about-container-2-img" src="images/3426526-removebg-preview.png" alt="">
+          <img id="about-container-2-img" src="images/3426526-removebg-preview.png" alt="Profile Illustration">
         </div>
       </div>
     </section>
     <section id="skills-section" class="main-skills reveal">
       <div class="skills-container">
-        <h2 class="skills-heading">SKILLS</h3>
+        <h2 class="skills-heading">SKILLS</h2>
       </div>
       <div class="skills-container-1">
         <ul>
@@ -105,11 +102,11 @@
     </section>
     <section id="projects-section" class="main-projects reveal">
       <div class="projects-container">
-        <h2 class="projects-heading">PROJECTS</h3>
+        <h2 class="projects-heading">PROJECTS</h2>
       </div>
       <div class="projects-container-0">
         <div class="projects-container-2">
-          <a href="https://da-ksh-esh.github.io/Amazon-Clone/"><img src="images/image.png" alt=""></a>
+          <a href="https://da-ksh-esh.github.io/Amazon-Clone/" target="_blank" rel="noopener noreferrer"><img src="images/image.png" alt="Amazon Clone Screenshot"></a>
         </div>
         <div class="projects-container-3">
           <h2>• Amazon Clone Project </h2>
@@ -119,7 +116,7 @@
       </div>
       <div class="projects-container-1">
         <div class="projects-container-2">
-          <a href="https://da-ksh-esh.github.io/WeatherApp/"><img src="images/WeatherAppIMG.png" alt=""></a>
+          <a href="https://da-ksh-esh.github.io/WeatherApp/" target="_blank" rel="noopener noreferrer"><img src="images/WeatherAppIMG.png" alt="Weather WebApp Screenshot"></a>
         </div>
         <div class="projects-container-3">
           <h2>• Weather WebApp</h2>
@@ -133,20 +130,21 @@
     </section> 
     <section id="contact-section" class="main-contact reveal">
       <div class="contact-container">
-        <h2 class="contact-heading">CONTACT</h3>
+        <h2 class="contact-heading">CONTACT</h2>
       </div>
       <div class="contact-container-0">
         <div class="contact-container-1">
-          <h3>Email: chauhan06dakshesh@gmail.com</h3>
+          <h3 style="cursor: pointer;" id="copy-email">Email: chauhan06dakshesh@gmail.com <i class="fa-regular fa-copy" style="font-size: 14px; margin-left: 5px;"></i></h3>
+          <span id="copy-status" class="copy-feedback">Copied!</span>
           <h3>Phone no.: 9650XXXXXX</h3>
         </div>
         <div class="contact-icons">
-          <a class="contact-icon-1 style" href="mailto:chauhan06dakshesh@gmail.com"><i class="fa-regular fa-envelope"target="_blank"></i></a>
-          <a class="contact-icon-2 style" href="https://github.com/da-ksh-esh"><i class="fa-brands fa-github-alt"target="_blank"></i></a>
-          <a class="contact-icon-3 style" href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/"target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a class="contact-icon-4 style" href="https://discord.com/users/776767307539152906"target="_blank"><i class="fa-brands fa-discord"></i></a>
-          <a class="contact-icon-5 style" href="https://www.instagram.com/da_ksh_esh"target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          <a class="contact-icon-6 style" href="https://www.x.com/da_ksh_esh"target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a class="contact-icon-1 style" href="mailto:chauhan06dakshesh@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+          <a class="contact-icon-2 style" href="https://github.com/da-ksh-esh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
+          <a class="contact-icon-3 style" href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a class="contact-icon-4 style" href="https://discord.com/users/776767307539152906" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a class="contact-icon-5 style" href="https://www.instagram.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="contact-icon-6 style" href="https://www.x.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
       </div>
     </section>
