@@ -6,17 +6,21 @@
 }
 
 body {
-    background: #181818;
-    color: white;
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: var(--text-color);
     font-family: Arial, sans-serif;
     text-align: center;
+    transition: background 0.3s, color 0.3s;
 }
 
 h2 {
     margin-top: 50px;
     font-family: Ubuntu;
     text-align: center;
-    color: #44f1a6;
+    color: var(--accent-color);
 }
 
 .slideshow-container {
@@ -41,7 +45,7 @@ h2 {
 }
 
 .description {
-    color: white;
+    color: var(--text-color);
     padding: 10px;
     font-size: 25px;
     font-weight: 600;
@@ -58,18 +62,20 @@ h2 {
     width: 40px;
     height: 40px;
     background: rgba(203, 201, 201, 0.3);
-    color: white;
+    color: var(--text-color);
     font-size: 24px;
     border: none;
     border-radius: 50%;
     transition: 0.3s;
+    z-index: 10;
 }
 
 .prev { left: 10px; }
 .next { right: 10px; }
 
 .prev:hover, .next:hover {
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--btn-bg);
+    color: var(--accent-color);
 }
 
 .counter {
@@ -77,9 +83,9 @@ h2 {
     bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(78, 77, 77, 0.6);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
-    color: white;
+    color: var(--text-color);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 17px;
@@ -94,13 +100,13 @@ h2 {
 
 .backToMain a{
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
     font-family: ubuntu;
     font-size: 17px;
 }
 
 .backToMain a:hover {
-    color: #44f1a6;
+    color: var(--accent-color);
 }
 
 @media only screen and (max-width: 750px){

@@ -13,14 +13,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.classList.add(theme + '-mode');
+        document.body.classList.add(theme + '-mode');
+      })();
+    </script>
     <script defer src="index.js"></script>
+    <script src="https://kit.fontawesome.com/653f96fbfb.js" crossorigin="anonymous"></script>
     <title>Dakshesh Chauhan | Portfolio</title>
-    <script
-      src="https://kit.fontawesome.com/653f96fbfb.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
-  <body class="dark-mode">
+  <body>
     <header>
       <nav class="nav-bar" id="nav-container">
         <ul class="nav-bar-container" id="nav-ul">
@@ -42,112 +46,122 @@
         </ul>
       </nav>
     </header>
-    <section id="about-section" class="main-about reveal">
-      <div class="about-container">
-        <h2 class="about-heading">ABOUT</h2>
-      </div>
-      <div class="about-container-0">
-        <div class="about-container-1">
-          <h2 class="name-heading">Dakshesh Chauhan</h2>
-          <h3 class="details-heading">[SIT Pune Btech. AIML'28]</h3>
-          <div class="social-icons">
-            <a href="mailto:chauhan06dakshesh@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-            <a href="https://github.com/da-ksh-esh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
-            <a href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://discord.com/users/776767307539152906" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://www.instagram.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.x.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-          </div>
-          <a href="#" target="_blank" rel="noopener noreferrer" class="resume-btn">>> Resume <<</a>
-        </div>  
-        <div class="about-container-2">
-          <img id="about-container-2-img" src="images/3426526-removebg-preview.png" alt="Profile Illustration">
+    <main>
+      <section id="about-section" class="main-about reveal">
+        <div class="about-container">
+          <h2 class="about-heading">ABOUT</h2>
         </div>
-      </div>
-    </section>
-    <section id="skills-section" class="main-skills reveal">
-      <div class="skills-container">
-        <h2 class="skills-heading">SKILLS</h2>
-      </div>
-      <div class="skills-container-1">
-        <ul>
-          <div class="skills-container-1-skill">
-            <li><i style="color: red;" class="fa-brands fa-html5"></i></li>
-            <h4>Html</h4>
+        <div class="about-container-0">
+          <div class="about-container-1">
+            <h1 class="name-heading">Dakshesh Chauhan</h1>
+            <h2 class="details-heading">[SIT Pune Btech. AIML'28]</h2>
+            <div class="social-icons">
+              <a href="mailto:chauhan06dakshesh@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+              <a href="https://github.com/da-ksh-esh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
+              <a href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://discord.com/users/776767307539152906" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+              <a href="https://www.instagram.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.x.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="resume-btn">>> Resume <<</a>
+          </div>  
+          <div class="about-container-2">
+            <img id="about-container-2-img" src="images/3426526-removebg-preview.png" alt="Profile Illustration">
           </div>
-          <div class="skills-container-1-skill">
-            <li><i style="color: gold;" class="fa-brands fa-js"></i></li>
-            <h4 >JavaScript</h4>
+        </div>
+      </section>
+      <section id="skills-section" class="main-skills reveal">
+        <div class="skills-container">
+          <h2 class="skills-heading">SKILLS</h2>
+        </div>
+        <div class="skills-container-1">
+          <ul>
+            <div class="skills-container-1-skill">
+              <li><i style="color: red;" class="fa-brands fa-html5"></i></li>
+              <h4>Html</h4>
+            </div>
+            <div class="skills-container-1-skill">
+              <li><i style="color: gold;" class="fa-brands fa-js"></i></li>
+              <h4 >JavaScript</h4>
+            </div>
+            <div class="skills-container-1-skill">
+              <li><i style="color: red;" class="fa-brands fa-git-alt"></i></li>
+              <h4>Git</h4>
+            </div>
+          </ul>
+          <ul>
+            <div class="skills-container-1-skill">
+              <li><i style="color: cornflowerblue;" class="fa-brands fa-css3-alt"></i></li>
+              <h4>Css</h4>
+            </div>
+            <div class="skills-container-1-skill">
+              <li><i style="color: gold;" class="fa-brands fa-python"></i></li>
+              <h4>Python</h4>
+            </div>
+            <div class="skills-container-1-skill">
+              <li><i style="color:rgb(30, 106, 164);" class="devicon-cplusplus-plain colored"></i></li>
+              <h4>C++</h4>
+            </div>
+          </ul>
+        </div>
+      </section>
+      <section id="projects-section" class="main-projects reveal">
+        <div class="projects-container">
+          <h2 class="projects-heading">PROJECTS</h2>
+        </div>
+        <article class="projects-container-0">
+          <div class="projects-container-2">
+            <img src="images/image.png" alt="Amazon Clone Screenshot">
           </div>
-          <div class="skills-container-1-skill">
-            <li><i style="color: red;" class="fa-brands fa-git-alt"></i></li>
-            <h4>Git</h4>
+          <div class="projects-container-3">
+            <h3>• Amazon Clone Project </h3>
+            <p><span class="projects-container-span">Description:</span> An Amazon Clone project that aims to replicate the user interface and functionality of Amazon, one of the largest online marketplaces globally.</p>
+            <p><span class="projects-container-span">Languages:</span> HTML, CSS</p>
+            <div class="project-links">
+              <a href="https://da-ksh-esh.github.io/Amazon-Clone/" target="_blank" rel="noopener noreferrer" class="project-btn">Live Demo</a>
+              <a href="https://github.com/da-ksh-esh/Amazon-Clone" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
+            </div>
           </div>
-        </ul>
-        <ul>
-          <div class="skills-container-1-skill">
-            <li><i style="color: cornflowerblue;" class="fa-brands fa-css3-alt"></i></li>
-            <h4>Css</h4>
+        </article>
+        <article class="projects-container-1">
+          <div class="projects-container-2">
+            <img src="images/WeatherAppIMG.png" alt="Weather WebApp Screenshot">
           </div>
-          <div class="skills-container-1-skill">
-            <li><i style="color: gold;" class="fa-brands fa-python"></i></li>
-            <h4>Python</h4>
+          <div class="projects-container-3">
+            <h3>• Weather WebApp</h3>
+            <p><span class="projects-container-span">Description:</span> A minimalistic Weather Webapp, with basic functionalities like current temperature, humidity and wind speed.</p>
+            <p><span class="projects-container-span">Languages:</span> HTML, CSS, Javascript</p>
+            <div class="project-links">
+              <a href="https://da-ksh-esh.github.io/WeatherApp/" target="_blank" rel="noopener noreferrer" class="project-btn">Live Demo</a>
+              <a href="https://github.com/da-ksh-esh/WeatherApp" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
+            </div>
           </div>
-          <div class="skills-container-1-skill">
-            <li><i style="color:rgb(30, 106, 164);" class="devicon-cplusplus-plain colored"></i></li>
-            <h4>C++</h4>
+        </article>
+        <div class="more-projects">
+          <h3><a href="projects.html">More>></a></h3>
+        </div> 
+      </section> 
+      <section id="contact-section" class="main-contact reveal">
+        <div class="contact-container">
+          <h2 class="contact-heading">CONTACT</h2>
+        </div>
+        <div class="contact-container-0">
+          <div class="contact-container-1">
+            <h3 style="cursor: pointer;" id="copy-email">Email: chauhan06dakshesh@gmail.com <i class="fa-regular fa-copy" style="font-size: 14px; margin-left: 5px;"></i></h3>
+            <span id="copy-status" class="copy-feedback">Copied!</span>
+            <h3>Phone no.: 9650XXXXXX</h3>
           </div>
-        </ul>
-      </div>
-    </section>
-    <section id="projects-section" class="main-projects reveal">
-      <div class="projects-container">
-        <h2 class="projects-heading">PROJECTS</h2>
-      </div>
-      <div class="projects-container-0">
-        <div class="projects-container-2">
-          <a href="https://da-ksh-esh.github.io/Amazon-Clone/" target="_blank" rel="noopener noreferrer"><img src="images/image.png" alt="Amazon Clone Screenshot"></a>
+          <div class="contact-icons">
+            <a class="contact-icon-1 style" href="mailto:chauhan06dakshesh@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+            <a class="contact-icon-2 style" href="https://github.com/da-ksh-esh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
+            <a class="contact-icon-3 style" href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="contact-icon-4 style" href="https://discord.com/users/776767307539152906" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a class="contact-icon-5 style" href="https://www.instagram.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a class="contact-icon-6 style" href="https://www.x.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
         </div>
-        <div class="projects-container-3">
-          <h2>• Amazon Clone Project </h2>
-          <p style="color: white;"><span class="projects-container-span">Description:</span> An Amazon Clone project that aims to replicate the user interface and functionality of Amazon, one of the largest online marketplaces globally.</p>
-          <p style="color: white;"><span class="projects-container-span">Languages:</span> HTML, CSS</p>
-        </div>
-      </div>
-      <div class="projects-container-1">
-        <div class="projects-container-2">
-          <a href="https://da-ksh-esh.github.io/WeatherApp/" target="_blank" rel="noopener noreferrer"><img src="images/WeatherAppIMG.png" alt="Weather WebApp Screenshot"></a>
-        </div>
-        <div class="projects-container-3">
-          <h2>• Weather WebApp</h2>
-          <p style="color: white;"><span class="projects-container-span">Description:</span> A minimalistic Weather Webapp, with basic functionalities like current temperature, humidity and wind speed.</p>
-          <p style="color: white;"><span class="projects-container-span">Languages:</span> HTML, CSS, Javascript</p>
-        </div>
-      </div>
-      <div class="more-projects">
-        <h3><a href="projects.html">More>></a></h3>
-      </div> 
-    </section> 
-    <section id="contact-section" class="main-contact reveal">
-      <div class="contact-container">
-        <h2 class="contact-heading">CONTACT</h2>
-      </div>
-      <div class="contact-container-0">
-        <div class="contact-container-1">
-          <h3 style="cursor: pointer;" id="copy-email">Email: chauhan06dakshesh@gmail.com <i class="fa-regular fa-copy" style="font-size: 14px; margin-left: 5px;"></i></h3>
-          <span id="copy-status" class="copy-feedback">Copied!</span>
-          <h3>Phone no.: 9650XXXXXX</h3>
-        </div>
-        <div class="contact-icons">
-          <a class="contact-icon-1 style" href="mailto:chauhan06dakshesh@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-          <a class="contact-icon-2 style" href="https://github.com/da-ksh-esh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
-          <a class="contact-icon-3 style" href="https://www.linkedin.com/in/dakshesh-chauhan-245267313/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a class="contact-icon-4 style" href="https://discord.com/users/776767307539152906" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-          <a class="contact-icon-5 style" href="https://www.instagram.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a class="contact-icon-6 style" href="https://www.x.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
     <footer>
       <button id="backToTop" onclick="scrollToTop()"><i class="fa-solid fa-angle-up"></i></button>
     </footer>

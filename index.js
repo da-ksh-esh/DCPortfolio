@@ -34,26 +34,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Theme Toggle Logic ---
     const themeToggle = document.getElementById("theme-toggle");
+    const html = document.documentElement;
     const body = document.body;
 
-    if (localStorage.getItem("theme") === "light") {
-        body.classList.replace("dark-mode", "light-mode");
-        themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
-    } else {
-        body.classList.add("dark-mode");
-        themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    function updateTheme(theme) {
+        if (theme === "light") {
+            html.classList.replace("dark-mode", "light-mode") || html.classList.add("light-mode");
+            body.classList.replace("dark-mode", "light-mode") || body.classList.add("light-mode");
+            themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        } else {
+            html.classList.replace("light-mode", "dark-mode") || html.classList.add("dark-mode");
+            body.classList.replace("light-mode", "dark-mode") || body.classList.add("dark-mode");
+            themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
     }
 
+    // Set initial icon and ensure theme classes are synced
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    updateTheme(savedTheme);
+
     themeToggle.addEventListener("click", () => {
-        if (body.classList.contains("light-mode")) {
-            body.classList.replace("light-mode", "dark-mode");
-            themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
-            localStorage.setItem("theme", "dark");
-        } else {
-            body.classList.replace("dark-mode", "light-mode");
-            themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
-            localStorage.setItem("theme", "light");
-        }
+        const currentTheme = body.classList.contains("light-mode") ? "light" : "dark";
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        localStorage.setItem("theme", newTheme);
+        updateTheme(newTheme);
     });
 
     // --- Intersection Observer for Reveal ---
