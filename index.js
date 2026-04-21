@@ -1,6 +1,6 @@
 /**
  * Portfolio Website Logic
- * Handles: Theme Toggle, Mobile Menu, Scroll Animations, Back to Top Button
+ * Handles: Theme Toggle, Mobile Menu, Scroll Animations, Back to Top Button, Section Highlighting
  */
 
 function myFunction() {
@@ -39,29 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateTheme(theme) {
         if (theme === "light") {
-            html.classList.replace("dark-mode", "light-mode") || html.classList.add("light-mode");
-            body.classList.replace("dark-mode", "light-mode") || body.classList.add("light-mode");
-            themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            html.classList.add("light-mode");
+            body.classList.add("light-mode");
+            if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
         } else {
-            html.classList.replace("light-mode", "dark-mode") || html.classList.add("dark-mode");
-            body.classList.replace("light-mode", "dark-mode") || body.classList.add("dark-mode");
-            themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            html.classList.remove("light-mode");
+            body.classList.remove("light-mode");
+            if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
         }
     }
 
-    // Set initial icon and ensure theme classes are synced
+    // Set initial theme based on saved preference
     const savedTheme = localStorage.getItem("theme") || "dark";
     updateTheme(savedTheme);
 
-    themeToggle.addEventListener("click", () => {
-        const currentTheme = body.classList.contains("light-mode") ? "light" : "dark";
-        const newTheme = currentTheme === "light" ? "dark" : "light";
-        localStorage.setItem("theme", newTheme);
-        updateTheme(newTheme);
-    });
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = body.classList.contains("light-mode") ? "light" : "dark";
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            updateTheme(newTheme);
+        });
+    }
 
-    // --- Intersection Observer for Reveal ---
-    const observer = new IntersectionObserver(entries => {
+    // --- Intersection Observer for Reveal and Highlighting ---
+    const navLinks = document.querySelectorAll(".nav-bar-container li a:not(#icon)");
+    const sections = document.querySelectorAll("section");
+
+    // Observer for reveal animations
+    const revealObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
@@ -69,9 +75,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 entry.target.classList.remove('show');
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Observer for active link highlighting (excluding Contact)
+    const activeLinkObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const id = entry.target.getAttribute("id");
+            if (id === "contact-section") return;
+
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+                });
+            }
+        });
+    }, { rootMargin: "-10% 0px -45% 0px" });
+
+    sections.forEach(section => {
+        revealObserver.observe(section);
+        activeLinkObserver.observe(section);
+    });
+
+    // Immediate highlighting on click (excluding Contact)
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            const href = link.getAttribute("href");
+            if (href && href.startsWith("#") && href !== "#contact-section") {
+                navLinks.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+            } else if (href === "#contact-section") {
+                navLinks.forEach(l => l.classList.remove("active"));
+            }
+        });
+    });
 
     // --- Back to Top ---
     const backToTopBtn = document.getElementById("backToTop");

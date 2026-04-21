@@ -50,6 +50,7 @@ body {
   transform: none;
 }
 
+/* Default Navbar Styles (Mobile First) */
 .nav-bar {
   width: 100%;
   margin: auto;
@@ -90,27 +91,63 @@ body {
   letter-spacing: 2px;
   text-align: center;
   text-transform: uppercase;
+  transition: color 0.3s ease;
+  display: inline-block;
 }
 
-.nav-bar ul li a:not(#icon)::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  border-radius: 10px;
-  background-color: var(--accent-color);
-  transition: width 0.25s ease;
-}
-
-.nav-bar ul li a:not(#icon):hover::after {
-  width: 60%;
+.nav-bar ul li a.active {
+  color: var(--accent-color);
 }
 
 .collapse-icon {
   display: none;
+}
+
+/* Desktop Sidebar View */
+@media only screen and (min-width: 751px) {
+  .nav-bar {
+    position: fixed;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    margin: auto 0;
+    width: auto;
+    z-index: 1000;
+  }
+
+  .mode-toggle {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 2000;
+  }
+
+  .nav-bar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    gap: 25px;
+    margin: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  .nav-bar ul li a {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: left;
+    padding: 5px 0;
+  }
+
+  /* Hide the hamburger icon list item in desktop */
+  .nav-bar ul li:has(#icon) {
+    display: none;
+  }
 }
 
 .main-about {
@@ -479,7 +516,6 @@ justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 900px) {
-
   .projects-container-1,
   .projects-container-0 {
     align-items: center;
@@ -491,7 +527,6 @@ justify-content: space-evenly;
     align-items: center;
     text-align: center;
   }
-
 }
 
 @media only screen and (max-width: 750px) {
@@ -596,5 +631,4 @@ justify-content: space-evenly;
     justify-content: center;
     gap: 20px;
   }
-
 }
