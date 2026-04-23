@@ -60,19 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTheme(newTheme);
     });
 
-    // --- Intersection Observer for Reveal ---
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            } else {
-                entry.target.classList.remove('show');
-            }
-        });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     // --- Back to Top ---
     const backToTopBtn = document.getElementById("backToTop");
     
