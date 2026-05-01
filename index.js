@@ -4,7 +4,7 @@
  */
 
 function myFunction() {
-    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
+    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext1-5, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
     let icon = document.getElementById("icon");
     let hiddenPortfolio = document.getElementById("hidden"); 
 
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("resize", function () {
-    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
+    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext1-5, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
     let hiddenPortfolio = document.getElementById("hidden");
 
     if (window.innerWidth > 750) {

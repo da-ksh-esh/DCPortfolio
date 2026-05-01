@@ -117,6 +117,133 @@ body {
   min-height: auto;
 }
 
+.main-education {
+  scroll-margin-top: 100px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 1200px;
+  margin: 100px auto 0;
+  min-height: auto;
+}
+
+.education-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: var(--accent-color);
+  top: 0;
+  bottom: 0;
+  left: 20px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 60px;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  left: 13px;
+  top: 5px;
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.timeline-date {
+  font-family: monospace;
+  color: var(--accent-color);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.timeline-content {
+  background: var(--skill-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateX(10px);
+}
+
+.timeline-content h3 {
+  font-family: ubuntu;
+  color: var(--text-color);
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.timeline-content p {
+  font-family: ubuntu;
+  color: var(--text-color);
+  opacity: 0.8;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.score-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(68, 241, 166, 0.1);
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: monospace;
+}
+
+.light-mode .score-badge {
+  background: rgba(46, 188, 127, 0.1);
+}
+
+@media only screen and (max-width: 750px) {
+  .main-education {
+    width: 90%;
+    margin-top: 80px;
+  }
+  
+  .timeline::before {
+    left: 10px;
+  }
+  
+  .timeline-dot {
+    left: 3px;
+  }
+  
+  .timeline-item {
+    padding-left: 40px;
+  }
+  
+  .timeline-content h3 {
+    font-size: 16px;
+  }
+  
+  .timeline-content p {
+    font-size: 14px;
+  }
+}
+
 .main-skills {
   scroll-margin-top: 100px;
   border-radius: 10px;
@@ -228,6 +355,7 @@ body {
 }
 
 .about-heading,
+.education-heading,
 .skills-heading,
 .projects-heading,
 .contact-heading {
@@ -730,6 +858,7 @@ body {
   }
 
   .about-heading,
+  .education-heading,
   .skills-heading,
   .projects-heading,
   .contact-heading {
