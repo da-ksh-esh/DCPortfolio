@@ -4,9 +4,11 @@
  */
 
 function myFunction() {
-    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext1-5, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
+    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
     let icon = document.getElementById("icon");
     let hiddenPortfolio = document.getElementById("hidden"); 
+
+    if (menuItems.length === 0) return;
 
     let isOpen = menuItems[0].style.display === "block";
 
@@ -14,11 +16,13 @@ function myFunction() {
         item.style.display = isOpen ? "none" : "block";
     });
 
-    hiddenPortfolio.style.display = isOpen ? "inline-flex" : "none";
+    if (hiddenPortfolio) hiddenPortfolio.style.display = isOpen ? "inline-flex" : "none";
 
-    icon.innerHTML = isOpen 
-        ? '<i class="fa-solid fa-bars-staggered"></i>'  
-        : '<i class="fa-solid fa-times"></i>';         
+    if (icon) {
+        icon.innerHTML = isOpen 
+            ? '<i class="fa-solid fa-bars-staggered"></i>'  
+            : '<i class="fa-solid fa-times"></i>';         
+    }
 }
 
 function scrollToTop() {
@@ -67,10 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const backToTopBtn = document.getElementById("backToTop");
     
     window.addEventListener("scroll", () => {
-        if (document.documentElement.scrollTop > 250) {
-            backToTopBtn.style.display = "block";
-        } else {
-            backToTopBtn.style.display = "none";
+        if (backToTopBtn) {
+            if (document.documentElement.scrollTop > 250) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
         }
     });
 
@@ -96,18 +102,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("resize", function () {
-    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext1-5, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
+    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
     let hiddenPortfolio = document.getElementById("hidden");
 
     if (window.innerWidth > 750) {
         menuItems.forEach(item => {
             item.style.display = "block";
         });
-        hiddenPortfolio.style.display = "none";
+        if (hiddenPortfolio) hiddenPortfolio.style.display = "none";
     } else {
         menuItems.forEach(item => {
             item.style.display = "none";
         });
-        hiddenPortfolio.style.display = "inline-flex";
+        if (hiddenPortfolio) hiddenPortfolio.style.display = "inline-flex";
     }
 });
+
+// Trigger initial state
+window.dispatchEvent(new Event("resize"));
+
