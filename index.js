@@ -41,24 +41,27 @@ document.addEventListener("DOMContentLoaded", () => {
         if (theme === "light") {
             html.classList.replace("dark-mode", "light-mode") || html.classList.add("light-mode");
             body.classList.replace("dark-mode", "light-mode") || body.classList.add("light-mode");
-            themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
         } else {
             html.classList.replace("light-mode", "dark-mode") || html.classList.add("dark-mode");
-            body.classList.replace("light-mode", "dark-mode") || body.classList.add("dark-mode");
-            themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            body.classList.replace("dark-mode", "light-mode") || body.classList.add("dark-mode");
+            if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
         }
     }
+
 
     // Set initial icon and ensure theme classes are synced
     const savedTheme = localStorage.getItem("theme") || "dark";
     updateTheme(savedTheme);
 
-    themeToggle.addEventListener("click", () => {
-        const currentTheme = body.classList.contains("light-mode") ? "light" : "dark";
-        const newTheme = currentTheme === "light" ? "dark" : "light";
-        localStorage.setItem("theme", newTheme);
-        updateTheme(newTheme);
-    });
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme = body.classList.contains("light-mode") ? "light" : "dark";
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            updateTheme(newTheme);
+        });
+    }
 
     // --- Back to Top ---
     const backToTopBtn = document.getElementById("backToTop");

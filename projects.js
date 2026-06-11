@@ -1,40 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let slideIndex = 0;
-    const slides = document.getElementsByClassName("slide");
-    const counter = document.getElementById("slide-counter");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
+    const projectItems = document.querySelectorAll(".project-reveal-item");
+    const bgImages = document.querySelectorAll(".reveal-bg");
 
-    function showSlides(n) {
-        if (slides.length === 0) return;
-        
-        if (n >= slides.length) slideIndex = 0;
-        if (n < 0) slideIndex = slides.length - 1;
+    projectItems.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+            const bgId = item.getAttribute("data-bg");
+            
+            // Remove active class from all bg images
+            bgImages.forEach((bg) => {
+                bg.classList.remove("active");
+            });
 
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].classList.remove("active");
-            slides[i].style.display = "none";
-        }
+            // Add active class to the hovered bg image
+            const targetBg = document.getElementById(bgId);
+            if (targetBg) {
+                targetBg.classList.add("active");
+            }
+        });
 
-        slides[slideIndex].style.display = "block";
-        slides[slideIndex].classList.add("active");
-        if (counter) {
-            counter.innerText = `${slideIndex + 1} / ${slides.length}`;
-        }
-    }
+        // Optional: Reset on mouse leave of the entire list
+        // If you want the background to stay until another is hovered, don't use this.
+    });
 
-    function changeSlide(n) {
-        slideIndex += n;
-        showSlides(slideIndex);
-    }
-
-    // Initial show
-    showSlides(slideIndex);
-
-    if (prevBtn) {
-        prevBtn.addEventListener("click", () => changeSlide(-1));
-    }
-    if (nextBtn) {
-        nextBtn.addEventListener("click", () => changeSlide(1));
+    // Handle initial state: show first project background by default
+    if (bgImages.length > 0) {
+        bgImages[0].classList.add("active");
     }
 });

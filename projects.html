@@ -29,23 +29,48 @@
     <header class="backToMain">
         <h3><a href="index.html"><i class="fa-solid fa-arrow-left"></i> back</a></h3>
     </header>
-    <h2>PROJECTS</h2>
 
-    <div class="slideshow-container">
-        <div class="slide fade">
-            <a href="https://da-ksh-esh.github.io/WeatherApp/" target="_blank" rel="noopener noreferrer"><img src="images/WeatherAppIMG.png" alt="Weather WebApp Screenshot"></a>
-            <div class="description">Weather WebApp</div>
-        </div>
-
-        <div class="slide fade">
-            <a href="https://da-ksh-esh.github.io/Amazon-Clone/" target="_blank" rel="noopener noreferrer"><img src="images/image.png" alt="Amazon Clone Screenshot"></a>
-            <div class="description">Amazon Clone Project</div>
-        </div>
-
-        <button class="prev" aria-label="Previous Slide">&#10094;</button>
-        <button class="next" aria-label="Next Slide">&#10095;</button>
-        <div class="counter" id="slide-counter">1 / 2</div>
+    <div class="background-reveal-container">
+        <div class="reveal-bg" id="bg-cloudshare" style="background-image: url('images/cloud-share.png');"></div>
+        <div class="reveal-bg" id="bg-fakereview" style="background-image: url('images/fake-review-detection.png');"></div>
+        <div class="reveal-bg" id="bg-weather" style="background-image: url('images/WeatherAppIMG.png');"></div>
+        <div class="reveal-bg" id="bg-amazon" style="background-image: url('images/image.png');"></div>
+        <div class="reveal-overlay"></div>
     </div>
+
+    <main class="reveal-layout">
+        <h2 class="reveal-heading">PROJECTS</h2>
+        <ul class="project-reveal-list">
+            <li class="project-reveal-item" data-bg="bg-cloudshare">
+                <a href="https://github.com/da-ksh-esh/CloudShare" target="_blank" rel="noopener noreferrer">
+                    <span class="project-number">01</span>
+                    <h3 class="project-title">CloudShare</h3>
+                    <span class="project-tech">Flask / JavaScript</span>
+                </a>
+            </li>
+            <li class="project-reveal-item" data-bg="bg-fakereview">
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                    <span class="project-number">02</span>
+                    <h3 class="project-title">Fake Review Detection</h3>
+                    <span class="project-tech">ML / Python</span>
+                </a>
+            </li>
+            <li class="project-reveal-item" data-bg="bg-weather">
+                <a href="https://da-ksh-esh.github.io/WeatherApp/" target="_blank" rel="noopener noreferrer">
+                    <span class="project-number">03</span>
+                    <h3 class="project-title">Weather WebApp</h3>
+                    <span class="project-tech">HTML / CSS / JS</span>
+                </a>
+            </li>
+            <li class="project-reveal-item" data-bg="bg-amazon">
+                <a href="https://da-ksh-esh.github.io/Amazon-Clone/" target="_blank" rel="noopener noreferrer">
+                    <span class="project-number">04</span>
+                    <h3 class="project-title">Amazon Clone</h3>
+                    <span class="project-tech">HTML / CSS</span>
+                </a>
+            </li>
+        </ul>
+    </main>
 </body>
 
 </html>

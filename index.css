@@ -594,21 +594,37 @@ body {
 .projects-container-1 {
   display: flex;
   min-height: 260px;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.projects-container-1 {
+  flex-direction: row-reverse;
 }
 
 .projects-container-2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--text-color);
+  width: 45%;
+  overflow: hidden;
   border-radius: 10px;
-  width: 50%;
 }
 
 .projects-container-2 img {
-  padding: 5px;
-  width: 330px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
   border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.projects-container-0:hover .projects-container-2 img,
+.projects-container-1:hover .projects-container-2 img {
+  transform: scale(1.08);
 }
 
 .projects-container-3 {
@@ -617,8 +633,7 @@ body {
   justify-content: center;
   font-family: ubuntu;
   color: var(--accent-color);
-  margin: 0 10px 0 10px;
-  width: 40%;
+  width: 45%;
 }
 
 .projects-container-3 p {
@@ -736,13 +751,7 @@ body {
 }
 
 @media only screen and (min-width: 901px) {
-  .projects-container-2 img {
-    transition: width 0.2s ease-in-out;
-  }
-
-  .projects-container-2 img:hover {
-    width: 375px;
-  }
+  /* Removed conflicting width-based hover to support scale-based zoom */
 }
 
 @media only screen and (max-width: 900px) {
@@ -751,6 +760,11 @@ body {
   .projects-container-0 {
     align-items: center;
     flex-direction: column;
+    gap: 20px;
+  }
+
+  .projects-container-2 {
+    width: 90%;
   }
 
   .projects-container-3 {
