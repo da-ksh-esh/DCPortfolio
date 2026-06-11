@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
         } else {
             html.classList.replace("light-mode", "dark-mode") || html.classList.add("dark-mode");
-            body.classList.replace("dark-mode", "light-mode") || body.classList.add("dark-mode");
+            body.classList.replace("light-mode", "dark-mode") || body.classList.add("dark-mode");
             if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
         }
     }
