@@ -1,27 +1,20 @@
-/**
- * Portfolio Website Logic
- * Handles: Theme Toggle, Mobile Menu, Scroll Animations, Back to Top Button
- */
-
 function myFunction() {
-    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
-    let icon = document.getElementById("icon");
-    let hiddenPortfolio = document.getElementById("hidden"); 
+    const navUl = document.getElementById("nav-ul");
+    const icon = document.getElementById("icon");
+    if (!navUl) return;
 
-    if (menuItems.length === 0) return;
+    const isOpen = navUl.classList.contains("menu-open");
 
-    let isOpen = menuItems[0].style.display === "block";
-
-    menuItems.forEach(item => {
-        item.style.display = isOpen ? "none" : "block";
-    });
-
-    if (hiddenPortfolio) hiddenPortfolio.style.display = isOpen ? "inline-flex" : "none";
-
-    if (icon) {
-        icon.innerHTML = isOpen 
-            ? '<i class="fa-solid fa-bars-staggered"></i>'  
-            : '<i class="fa-solid fa-times"></i>';         
+    if (isOpen) {
+        navUl.classList.remove("menu-open");
+        if (icon) {
+            icon.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+        }
+    } else {
+        navUl.classList.add("menu-open");
+        if (icon) {
+            icon.innerHTML = '<i class="fa-solid fa-times"></i>';
+        }
     }
 }
 
@@ -30,13 +23,26 @@ function scrollToTop() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // --- Mobile Menu Toggle ---
     const icon = document.getElementById("icon");
     if (icon) {
         icon.addEventListener("click", myFunction);
     }
 
-    // --- Theme Toggle Logic ---
+    const navUl = document.getElementById("nav-ul");
+    if (navUl) {
+        const navLinks = navUl.querySelectorAll("a:not(#icon)");
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth <= 750) {
+                    navUl.classList.remove("menu-open");
+                    if (icon) {
+                        icon.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+                    }
+                }
+            });
+        });
+    }
+
     const themeToggle = document.getElementById("theme-toggle");
     const html = document.documentElement;
     const body = document.body;
@@ -53,8 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
-    // Set initial icon and ensure theme classes are synced
     const savedTheme = localStorage.getItem("theme") || "dark";
     updateTheme(savedTheme);
 
@@ -67,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Back to Top ---
     const backToTopBtn = document.getElementById("backToTop");
     
     window.addEventListener("scroll", () => {
@@ -84,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
         backToTopBtn.addEventListener("click", scrollToTop);
     }
 
-    // --- Copy Email to Clipboard ---
     const emailText = "chauhan06dakshesh@gmail.com";
     const copyBtn = document.getElementById("copy-email");
     const copyStatus = document.getElementById("copy-status");
@@ -102,22 +104,70 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("resize", function () {
-    let menuItems = document.querySelectorAll("#nav-res-ext1, #nav-res-ext2, #nav-res-ext3, #nav-res-ext4");
-    let hiddenPortfolio = document.getElementById("hidden");
-
+    const navUl = document.getElementById("nav-ul");
+    const icon = document.getElementById("icon");
     if (window.innerWidth > 750) {
-        menuItems.forEach(item => {
-            item.style.display = "block";
-        });
-        if (hiddenPortfolio) hiddenPortfolio.style.display = "none";
-    } else {
-        menuItems.forEach(item => {
-            item.style.display = "none";
-        });
-        if (hiddenPortfolio) hiddenPortfolio.style.display = "inline-flex";
+        if (navUl) {
+            navUl.classList.remove("menu-open");
+        }
+        if (icon) {
+            icon.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
+        }
     }
 });
 
-// Trigger initial state
 window.dispatchEvent(new Event("resize"));
+
+window.addEventListener("scroll", () => {
+    const sections = [
+        document.getElementById("about-section"),
+        document.getElementById("skills-section"),
+        document.getElementById("projects-section"),
+        document.getElementById("certifications-section"),
+        document.getElementById("contact-section")
+    ];
+
+    const navLinks = {
+        "about-section": document.getElementById("nav-res-ext1"),
+        "skills-section": document.getElementById("nav-res-ext2"),
+        "projects-section": document.getElementById("nav-res-ext3"),
+        "certifications-section": document.getElementById("nav-res-ext5"),
+        "contact-section": document.getElementById("nav-res-ext4")
+    };
+
+    let currentSectionId = "";
+    let minDistance = Infinity;
+    const triggerLine = 200;
+
+    sections.forEach(section => {
+        if (section) {
+            const rect = section.getBoundingClientRect();
+            const distance = Math.abs(rect.top - triggerLine);
+
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    currentSectionId = section.id;
+                }
+            }
+        }
+    });
+
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 80) {
+        currentSectionId = "contact-section";
+    }
+
+    Object.keys(navLinks).forEach(id => {
+        const link = navLinks[id];
+        if (link) {
+            if (id === currentSectionId) {
+                link.classList.add("active-nav");
+            } else {
+                link.classList.remove("active-nav");
+            }
+        }
+    });
+});
+
+
 
