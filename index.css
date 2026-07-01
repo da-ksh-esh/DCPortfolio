@@ -164,7 +164,7 @@ header:not(.backToMain) {
   border-radius: 10px;
   width: 80%;
   max-width: 1200px;
-  margin: 100px auto 40px;
+  margin: 80px auto 40px;
   min-height: auto;
 }
 
@@ -336,6 +336,10 @@ header:not(.backToMain) {
 }
 
 @media only screen and (max-width: 750px) {
+.main-about {
+  margin-top: 60px;
+}
+
   .main-education {
     width: 90%;
     margin-top: 80px;
@@ -1207,7 +1211,7 @@ header:not(.backToMain) {
 
   .visualizer-email,
   .visualizer-phone {
-    font-size: 16px;
+    font-size: 12px;
     padding: 4px 8px;
     flex-wrap: wrap;
     justify-content: center;
