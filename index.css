@@ -1211,7 +1211,7 @@ header:not(.backToMain) {
 
   .visualizer-email,
   .visualizer-phone {
-    font-size: 12px;
+    font-size: 14px;
     padding: 4px 8px;
     flex-wrap: wrap;
     justify-content: center;
