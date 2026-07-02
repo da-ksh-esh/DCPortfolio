@@ -814,10 +814,10 @@ header:not(.backToMain) {
 .wave-svg {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 8.333%;
+  width: 83.333%;
   height: 100%;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .wave-line {
@@ -834,7 +834,7 @@ header:not(.backToMain) {
 
 @keyframes waveFlow {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-600px); }
+  100% { transform: translateX(-480px); }
 }
 
 .wave-nodes {
@@ -843,8 +843,9 @@ header:not(.backToMain) {
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
   align-items: center;
   z-index: 5;
   pointer-events: none;
