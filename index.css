@@ -6,6 +6,7 @@
   --skill-bg: rgba(255, 255, 255, 0.08);
   --contact-bg: rgba(255, 255, 255, 0.15);
   --btn-bg: rgba(255, 255, 255, 0.17);
+  --card-bg: rgba(255, 255, 255, 0.05);
 }
 
 .light-mode {
@@ -42,6 +43,21 @@ body {
   font-size: 20px;
   color: var(--text-color);
   transition: color 0.3s ease-in-out;
+}
+
+/* Both icons are in the markup; the class set by the inline <head> script picks one before first paint. */
+.theme-icon-moon,
+.light-mode .theme-icon-sun {
+  display: none;
+}
+
+.light-mode .theme-icon-moon {
+  display: inline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
 }
 
 .reveal {
@@ -157,6 +173,9 @@ header:not(.backToMain) {
 
 .collapse-icon {
   display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .main-about {
@@ -431,6 +450,7 @@ header:not(.backToMain) {
   left: 50%;
   transform: translateX(-50%);
   display: none;
+  white-space: nowrap;
   font-family: ubuntu;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 10;
@@ -439,6 +459,7 @@ header:not(.backToMain) {
 .details-heading {
   text-align: center;
   color: var(--text-color);
+  font-weight: 700;
   font-family: monospace;
   width: 220px;
   font-size: 14px;
@@ -515,6 +536,7 @@ header:not(.backToMain) {
   color: var(--accent-color);
   font-family: ubuntu;
   font-size: 25px;
+  font-weight: 700;
 }
 
 .skills-container {
@@ -773,6 +795,12 @@ header:not(.backToMain) {
   position: relative;
   padding: 6px 16px;
   transition: all 0.3s ease;
+}
+
+.visualizer-email {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .vis-label {
@@ -1476,5 +1504,21 @@ header:not(.backToMain) {
   .certifications-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .name-heading {
+    animation: none;
+    border-right: none;
   }
 }

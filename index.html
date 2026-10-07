@@ -5,19 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Mono&family=Ubuntu+Mono:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <script>
       (function() {
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.classList.add(theme + '-mode');
-        document.body.classList.add(theme + '-mode');
       })();
     </script>
     <script defer src="index.js"></script>
@@ -35,14 +30,15 @@
           <li><a id="nav-res-ext5" href="#certifications-section">Certificates</a></li>
           <li><a id="nav-res-ext4" href="#contact-section">Contact</a></li>
           <li>
-            <button id="theme-toggle" class="mode-toggle" aria-label="Toggle Theme">
-              <i class="fa-solid fa-moon"></i>
+            <button id="theme-toggle" class="mode-toggle" type="button" aria-label="Toggle theme">
+              <span class="theme-icon-sun"><i class="fa-solid fa-sun"></i></span>
+              <span class="theme-icon-moon"><i class="fa-solid fa-moon"></i></span>
             </button>
           </li>          
           <li>
-            <a href="javascript:void(0);" id="icon" class="collapse-icon">
+            <button id="icon" class="collapse-icon" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-ul">
               <i class="fa-solid fa-bars-staggered"></i>
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
@@ -50,12 +46,12 @@
     <main>
       <section id="about-section" class="main-about reveal">
         <div class="about-container">
-          <h2 class="about-heading">ABOUT</h2>
+          <p class="about-heading">ABOUT</p>
         </div>
         <div class="about-container-0">
           <div class="about-container-1">
             <h1 class="name-heading">Dakshesh Chauhan</h1>
-            <h2 class="details-heading">[Btech. AIML, SIT Pune'28]</h2>
+            <p class="details-heading">[Btech. AIML, SIT Pune'28]</p>
             <div class="social-icons">
               <a href="mailto:chauhan06dakshesh@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
               <a href="https://github.com/da-ksh-esh" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github-alt"></i></a>
@@ -64,7 +60,8 @@
               <a href="https://www.instagram.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
               <a href="https://www.x.com/da_ksh_esh" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="resume-btn">>> Resume <<</a>
+            <!-- TODO: add resume.pdf to the repo, then restore this link with href="resume.pdf" -->
+            <!-- <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="resume-btn">>> Resume <<</a> -->
           </div>  
           <div class="about-container-2">
             <img id="about-container-2-img" src="images/3426526-removebg-preview.png" alt="Profile Illustration">
@@ -150,7 +147,7 @@
         </div>
         <article class="projects-container-0">
           <div class="projects-container-2">
-            <img src="images/cloud-share.png" alt="fake review Screenshot">
+            <img src="images/cloud-share.png" alt="CloudShare Screenshot">
           </div>
           <div class="projects-container-3">
             <h3>• CloudShare</h3>
@@ -163,7 +160,7 @@
         </article>
         <article class="projects-container-1">
           <div class="projects-container-2">
-            <img src="images/WeatherAppIMG.png" alt="Weather WebApp Screenshot">
+            <img src="images/WeatherAppIMG.webp" alt="Weather WebApp Screenshot">
           </div>
           <div class="projects-container-3">
             <h3>• Weather WebApp</h3>
@@ -177,7 +174,7 @@
         </article>
         <article class="projects-container-0">
           <div class="projects-container-2">
-            <img src="images/image.png" alt="Amazon Clone Screenshot">
+            <img src="images/amazon-clone.webp" alt="Amazon Clone Screenshot">
           </div>
           <div class="projects-container-3">
             <h3>• Amazon Clone Project </h3>
@@ -259,12 +256,12 @@
         </div>
         
         <div class="visualizer-details">
-          <div class="visualizer-email" id="copy-email" style="cursor: pointer;">
+          <button type="button" class="visualizer-email" id="copy-email" aria-label="Copy email address chauhan06dakshesh@gmail.com">
             <span class="vis-label">EMAIL //</span>
             <span class="vis-value">chauhan06dakshesh@gmail.com</span>
             <i class="fa-regular fa-copy copy-icon"></i>
-            <span id="copy-status" class="copy-feedback">Copied!</span>
-          </div>
+            <span id="copy-status" class="copy-feedback" role="status" aria-live="polite"></span>
+          </button>
           <div class="visualizer-phone">
             <span class="vis-label">PHONE //</span>
             <span class="vis-value">9650XXXXXX</span>
@@ -288,7 +285,7 @@
       </section>
     </main>
     <footer>
-      <button id="backToTop" onclick="scrollToTop()"><i class="fa-solid fa-angle-up"></i></button>
+      <button id="backToTop" type="button" aria-label="Back to top"><i class="fa-solid fa-angle-up"></i></button>
     </footer>
   </body>
 </html>

@@ -106,7 +106,8 @@ body {
     position: relative;
 }
 
-.project-reveal-item:hover a {
+.project-reveal-item:hover a,
+.project-reveal-item:focus-within a {
     padding-left: 40px;
 }
 
@@ -135,12 +136,14 @@ body {
     color: var(--accent-color);
 }
 
-.project-reveal-item:hover .project-tech {
+.project-reveal-item:hover .project-tech,
+.project-reveal-item:focus-within .project-tech {
     opacity: 1;
     transform: translateX(0);
 }
 
-.project-reveal-item:hover .project-title {
+.project-reveal-item:hover .project-title,
+.project-reveal-item:focus-within .project-title {
     color: var(--accent-color);
 }
 

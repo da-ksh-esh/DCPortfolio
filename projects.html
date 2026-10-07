@@ -7,17 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="projects.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Mono&family=Ubuntu+Mono:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/653f96fbfb.js" crossorigin="anonymous"></script>
     <script>
       (function() {
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.classList.add(theme + '-mode');
-        document.body.classList.add(theme + '-mode');
       })();
     </script>
     <script defer src="index.js"></script>
@@ -27,19 +25,19 @@
 
 <body>
     <header class="backToMain">
-        <h3><a href="index.html"><i class="fa-solid fa-arrow-left"></i> back</a></h3>
+        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> back</a>
     </header>
 
     <div class="background-reveal-container">
         <div class="reveal-bg" id="bg-cloudshare" style="background-image: url('images/cloud-share.png');"></div>
         <div class="reveal-bg" id="bg-fakereview" style="background-image: url('images/fake-review-detection.png');"></div>
-        <div class="reveal-bg" id="bg-weather" style="background-image: url('images/WeatherAppIMG.png');"></div>
-        <div class="reveal-bg" id="bg-amazon" style="background-image: url('images/image.png');"></div>
+        <div class="reveal-bg" id="bg-weather" style="background-image: url('images/WeatherAppIMG.webp');"></div>
+        <div class="reveal-bg" id="bg-amazon" style="background-image: url('images/amazon-clone.webp');"></div>
         <div class="reveal-overlay"></div>
     </div>
 
     <main class="reveal-layout">
-        <h2 class="reveal-heading">PROJECTS</h2>
+        <h1 class="reveal-heading">PROJECTS</h1>
         <ul class="project-reveal-list">
             <li class="project-reveal-item" data-bg="bg-cloudshare">
                 <a href="https://github.com/da-ksh-esh/CloudShare" target="_blank" rel="noopener noreferrer">

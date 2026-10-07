@@ -1,25 +1,28 @@
-function myFunction() {
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function setMenuOpen(open) {
     const navUl = document.getElementById("nav-ul");
     const icon = document.getElementById("icon");
-    if (!navUl) return;
-
-    const isOpen = navUl.classList.contains("menu-open");
-
-    if (isOpen) {
-        navUl.classList.remove("menu-open");
-        if (icon) {
-            icon.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
-        }
-    } else {
-        navUl.classList.add("menu-open");
-        if (icon) {
-            icon.innerHTML = '<i class="fa-solid fa-times"></i>';
-        }
+    if (navUl) {
+        navUl.classList.toggle("menu-open", open);
+    }
+    if (icon) {
+        icon.innerHTML = open
+            ? '<i class="fa-solid fa-times"></i>'
+            : '<i class="fa-solid fa-bars-staggered"></i>';
+        icon.setAttribute("aria-expanded", String(open));
+        icon.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     }
 }
 
+function myFunction() {
+    const navUl = document.getElementById("nav-ul");
+    if (!navUl) return;
+    setMenuOpen(!navUl.classList.contains("menu-open"));
+}
+
 function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion.matches ? "auto" : "smooth" });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,10 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.forEach(link => {
             link.addEventListener("click", () => {
                 if (window.innerWidth <= 750) {
-                    navUl.classList.remove("menu-open");
-                    if (icon) {
-                        icon.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
-                    }
+                    setMenuOpen(false);
                 }
             });
         });
@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (theme === "light") {
             html.classList.replace("dark-mode", "light-mode") || html.classList.add("light-mode");
             body.classList.replace("dark-mode", "light-mode") || body.classList.add("light-mode");
-            if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            if (themeToggle) themeToggle.setAttribute("aria-label", "Switch to dark mode");
         } else {
             html.classList.replace("light-mode", "dark-mode") || html.classList.add("dark-mode");
             body.classList.replace("light-mode", "dark-mode") || body.classList.add("dark-mode");
-            if (themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            if (themeToggle) themeToggle.setAttribute("aria-label", "Switch to light mode");
         }
     }
 
@@ -91,28 +91,60 @@ document.addEventListener("DOMContentLoaded", () => {
     const copyBtn = document.getElementById("copy-email");
     const copyStatus = document.getElementById("copy-status");
 
+    let copyStatusTimer;
+
+    function showCopyStatus(message) {
+        if (!copyStatus) return;
+        copyStatus.textContent = message;
+        copyStatus.style.display = "block";
+        clearTimeout(copyStatusTimer);
+        copyStatusTimer = setTimeout(() => {
+            copyStatus.style.display = "none";
+            copyStatus.textContent = "";
+        }, 2000);
+    }
+
+    // Fallback for browsers or contexts (e.g. file://, plain http) without the Clipboard API.
+    function legacyCopy(text) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        let ok = false;
+        try {
+            ok = document.execCommand("copy");
+        } catch (e) {
+            ok = false;
+        }
+        textarea.remove();
+        return ok;
+    }
+
     if (copyBtn) {
-        copyBtn.addEventListener("click", () => {
-            navigator.clipboard.writeText(emailText).then(() => {
-                copyStatus.style.display = "block";
-                setTimeout(() => {
-                    copyStatus.style.display = "none";
-                }, 2000);
-            });
+        copyBtn.addEventListener("click", async () => {
+            let ok = false;
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    await navigator.clipboard.writeText(emailText);
+                    ok = true;
+                } catch (e) {
+                    ok = legacyCopy(emailText);
+                }
+            } else {
+                ok = legacyCopy(emailText);
+            }
+            showCopyStatus(ok ? "Copied!" : "Copy failed");
         });
     }
 });
 
 window.addEventListener("resize", function () {
     const navUl = document.getElementById("nav-ul");
-    const icon = document.getElementById("icon");
-    if (window.innerWidth > 750) {
-        if (navUl) {
-            navUl.classList.remove("menu-open");
-        }
-        if (icon) {
-            icon.innerHTML = '<i class="fa-solid fa-bars-staggered"></i>';
-        }
+    if (window.innerWidth > 750 && navUl && navUl.classList.contains("menu-open")) {
+        setMenuOpen(false);
     }
 });
 
