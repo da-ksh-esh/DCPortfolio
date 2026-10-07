@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const navUl = document.getElementById("nav-ul");
     if (navUl) {
-        const navLinks = navUl.querySelectorAll("a:not(#icon)");
+        const navLinks = navUl.querySelectorAll("a");
         navLinks.forEach(link => {
             link.addEventListener("click", () => {
                 if (window.innerWidth <= 750) {
@@ -88,8 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
         backToTopBtn.addEventListener("click", scrollToTop);
     }
 
-    const emailText = "chauhan06dakshesh@gmail.com";
     const copyBtn = document.getElementById("copy-email");
+    // Read the address from the page so it only has to be updated in the HTML.
+    const emailText = copyBtn ? copyBtn.querySelector(".vis-value").textContent.trim() : "";
     const copyStatus = document.getElementById("copy-status");
 
     let copyStatusTimer;

@@ -2,9 +2,6 @@
   --bg-gradient: linear-gradient(180deg, #181818, black);
   --text-color: white;
   --accent-color: #44f1a6;
-  --nav-bg: rgba(255, 255, 255, 0.08);
-  --skill-bg: rgba(255, 255, 255, 0.08);
-  --contact-bg: rgba(255, 255, 255, 0.15);
   --btn-bg: rgba(255, 255, 255, 0.17);
   --card-bg: rgba(255, 255, 255, 0.05);
   --rail-surface: #141414;
@@ -18,9 +15,6 @@
   --bg-gradient: linear-gradient(180deg, #ffffff, #dddddd);
   --text-color: #333;
   --accent-color: #2ebc7f;
-  --nav-bg: rgba(0, 0, 0, 0.05);
-  --skill-bg: rgba(0, 0, 0, 0.05);
-  --contact-bg: rgba(0, 0, 0, 0.1);
   --btn-bg: rgba(0, 0, 0, 0.1);
   --rail-surface: #f1f1f1;
   --rail-glass: rgba(0, 0, 0, 0.04);
@@ -70,18 +64,12 @@ body {
   outline-offset: 3px;
 }
 
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
+/* Top navbar: shown on mobile only (see the max-width: 750px block); desktop uses .icon-rail. */
 header:not(.backToMain) {
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
-  padding-top: 40px;
-  padding-bottom: 20px;
   pointer-events: none;
 }
 
@@ -91,43 +79,11 @@ header:not(.backToMain) {
 }
 
 .nav-bar-container {
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 65px;
-  width: 85%;
-  max-width: 1000px;
-  margin: 0 auto;
-  border-radius: 50px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.nav-mobile-header {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-mobile-controls {
-  display: flex;
-  align-items: center;
-}
-
-.nav-links-container {
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-links-container li {
-  list-style: none;
 }
 
 .light-mode .nav-bar-container {
@@ -137,7 +93,6 @@ header:not(.backToMain) {
 }
 
 #hidden {
-  display: none;
   font-family: "Noto Sans", sans-serif;
 }
 
@@ -156,7 +111,7 @@ header:not(.backToMain) {
   text-transform: uppercase;
 }
 
-.nav-bar ul li a:not(#icon)::after {
+.nav-bar ul li a::after {
   content: "";
   position: absolute;
   bottom: -4px;
@@ -169,7 +124,7 @@ header:not(.backToMain) {
   transition: width 0.25s ease;
 }
 
-.nav-bar ul li a:not(#icon):hover::after {
+.nav-bar ul li a:hover::after {
   width: 60%;
 }
 
@@ -182,7 +137,6 @@ header:not(.backToMain) {
 }
 
 .collapse-icon {
-  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -670,7 +624,6 @@ header:not(.backToMain) {
   justify-content: space-evenly;
 }
 
-.contact-icons a,
 .social-icons a {
   color: var(--text-color);
 }
@@ -679,6 +632,7 @@ header:not(.backToMain) {
 .education-heading,
 .skills-heading,
 .projects-heading,
+.certifications-heading,
 .contact-heading {
   color: var(--accent-color);
   font-family: ubuntu;
@@ -691,38 +645,6 @@ header:not(.backToMain) {
   justify-content: center;
   width: 100%;
   margin-bottom: 40px;
-}
-
-.skills-container-1 {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  width: 100%;
-}
-
-.skill-category {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 40px;
-  flex: 1;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.category-title {
-  font-family: ubuntu;
-  color: var(--accent-color);
-  font-size: 22px;
-  margin-bottom: 30px;
-  text-align: center;
-  width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 15px;
 }
 
 .skills-badges-grid {
@@ -1075,9 +997,9 @@ header:not(.backToMain) {
   box-shadow: 0 8px 25px rgba(234, 67, 53, 0.4);
 }
 .wave-node.node-github:hover {
-  background: #24292e;
-  border-color: #24292e;
-  box-shadow: 0 8px 25px rgba(36, 41, 46, 0.4);
+  background: #6e7681;
+  border-color: #6e7681;
+  box-shadow: 0 8px 25px rgba(110, 118, 129, 0.4);
 }
 .light-mode .wave-node.node-github:hover {
   background: #171515;
@@ -1100,7 +1022,7 @@ header:not(.backToMain) {
 }
 .wave-node.node-x:hover {
   background: #000000;
-  border-color: #333;
+  border-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
 }
 .light-mode .wave-node.node-x:hover {
@@ -1114,8 +1036,8 @@ header:not(.backToMain) {
   filter: drop-shadow(0 0 8px rgba(234, 67, 53, 0.5));
 }
 .wave-container:has(.node-github:hover) .wave-line {
-  stroke: #24292e;
-  filter: drop-shadow(0 0 8px rgba(36, 41, 46, 0.5));
+  stroke: #6e7681;
+  filter: drop-shadow(0 0 8px rgba(110, 118, 129, 0.5));
 }
 .light-mode .wave-container:has(.node-github:hover) .wave-line {
   stroke: #171515;
@@ -1178,9 +1100,6 @@ header:not(.backToMain) {
   transition: 0.05s ease-in-out;
   background: var(--btn-bg);
   backdrop-filter: blur(10px);
-}
-
-@media only screen and (min-width: 901px) {
 }
 
 @media only screen and (max-width: 900px) {
@@ -1320,11 +1239,6 @@ header:not(.backToMain) {
     padding: 0 10px;
   }
 
-  .contact-icons {
-    justify-content: center;
-    gap: 15px;
-  }
-
   .about-container-0 {
     flex-direction: column-reverse;
     align-items: center;
@@ -1422,23 +1336,9 @@ header:not(.backToMain) {
   .education-heading,
   .skills-heading,
   .projects-heading,
+  .certifications-heading,
   .contact-heading {
     font-size: 22px;
-  }
-
-  .skills-badges-grid {
-    gap: 12px;
-    padding: 0 10px;
-  }
-
-  .skill-badge {
-    padding: 10px 20px;
-    font-size: 14px;
-    gap: 8px;
-  }
-
-  .skill-badge i {
-    font-size: 18px;
   }
 
 }
@@ -1456,12 +1356,6 @@ header:not(.backToMain) {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
-}
-
-.certifications-heading {
-  color: var(--accent-color);
-  font-family: ubuntu;
-  font-size: 25px;
 }
 
 .certifications-grid {
@@ -1644,9 +1538,6 @@ header:not(.backToMain) {
   .main-certifications {
     width: 90%;
     margin-top: 80px;
-  }
-  .certifications-heading {
-    font-size: 22px;
   }
   .certifications-grid {
     grid-template-columns: 1fr;
