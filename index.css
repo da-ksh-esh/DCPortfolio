@@ -7,6 +7,11 @@
   --contact-bg: rgba(255, 255, 255, 0.15);
   --btn-bg: rgba(255, 255, 255, 0.17);
   --card-bg: rgba(255, 255, 255, 0.05);
+  --rail-surface: #141414;
+  --rail-glass: rgba(255, 255, 255, 0.05);
+  --rail-border: rgba(255, 255, 255, 0.1);
+  --rail-line: rgba(255, 255, 255, 0.1);
+  --rail-accent-soft: rgba(68, 241, 166, 0.12);
 }
 
 .light-mode {
@@ -17,6 +22,11 @@
   --skill-bg: rgba(0, 0, 0, 0.05);
   --contact-bg: rgba(0, 0, 0, 0.1);
   --btn-bg: rgba(0, 0, 0, 0.1);
+  --rail-surface: #f1f1f1;
+  --rail-glass: rgba(0, 0, 0, 0.04);
+  --rail-border: rgba(0, 0, 0, 0.1);
+  --rail-line: rgba(0, 0, 0, 0.1);
+  --rail-accent-soft: rgba(46, 188, 127, 0.14);
 }
 
 * {
@@ -163,11 +173,11 @@ header:not(.backToMain) {
   width: 60%;
 }
 
-.nav-bar ul li a.active-nav {
+.nav-bar ul li a.is-active {
   color: var(--accent-color) !important;
 }
 
-.nav-bar ul li a.active-nav::after {
+.nav-bar ul li a.is-active::after {
   width: 60%;
 }
 
@@ -176,6 +186,143 @@ header:not(.backToMain) {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+/* Desktop navigation: vertical icon rail. The top navbar is only used on mobile. */
+.icon-rail {
+  position: fixed;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 40px;
+  background: var(--rail-glass);
+  border: 1px solid var(--rail-border);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.light-mode .icon-rail {
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+.icon-rail ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.icon-rail a,
+.icon-rail .mode-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text-color);
+  opacity: 0.7;
+  font-size: 17px;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+
+.icon-rail a:hover,
+.icon-rail .mode-toggle:hover {
+  opacity: 1;
+  background: var(--rail-glass);
+  color: var(--accent-color);
+}
+
+.icon-rail a.is-active {
+  opacity: 1;
+  color: var(--accent-color);
+  background: var(--rail-accent-soft);
+}
+
+/* Accent bar on the rail's left edge next to the active icon */
+.icon-rail a::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  border-radius: 3px;
+  background: var(--accent-color);
+  transform: translateY(-50%);
+  transition: height 0.25s ease;
+}
+
+.icon-rail a.is-active::before {
+  height: 22px;
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Tooltip label; it is also the link's accessible name */
+.icon-tip {
+  position: absolute;
+  left: calc(100% + 18px);
+  top: 50%;
+  transform: translate(-6px, -50%);
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: var(--rail-surface);
+  border: 1px solid var(--rail-border);
+  color: var(--text-color);
+  font-family: "PT Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-rail a:hover .icon-tip,
+.icon-rail a:focus-visible .icon-tip {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.icon-divider {
+  width: 24px;
+  height: 1px;
+  margin: 4px 0;
+  background: var(--rail-line);
+}
+
+@media only screen and (min-width: 751px) {
+  header:not(.backToMain) {
+    display: none;
+  }
+
+  /* No sticky header on desktop, so anchor jumps need less offset. */
+  main > section[id] {
+    scroll-margin-top: 40px;
+  }
+}
+
+/* Keep content clear of the rail on narrow laptops and tablets. */
+@media only screen and (min-width: 751px) and (max-width: 1150px) {
+  main {
+    padding-left: 90px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .icon-rail {
+    display: none;
+  }
 }
 
 .main-about {

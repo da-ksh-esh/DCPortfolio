@@ -20,17 +20,32 @@
     <title>Dakshesh Chauhan | Portfolio</title>
   </head>
   <body>
+    <nav class="icon-rail" aria-label="Sections">
+      <ul>
+        <li><a href="#about-section" data-section-link="about-section"><i class="fa-solid fa-user" aria-hidden="true"></i><span class="icon-tip">About</span></a></li>
+        <li><a href="#education-section" data-section-link="education-section"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><span class="icon-tip">Education</span></a></li>
+        <li><a href="#skills-section" data-section-link="skills-section"><i class="fa-solid fa-code" aria-hidden="true"></i><span class="icon-tip">Skills</span></a></li>
+        <li><a href="#projects-section" data-section-link="projects-section"><i class="fa-solid fa-folder-open" aria-hidden="true"></i><span class="icon-tip">Projects</span></a></li>
+        <li><a href="#certifications-section" data-section-link="certifications-section"><i class="fa-solid fa-award" aria-hidden="true"></i><span class="icon-tip">Certificates</span></a></li>
+        <li><a href="#contact-section" data-section-link="contact-section"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="icon-tip">Contact</span></a></li>
+      </ul>
+      <div class="icon-divider"></div>
+      <button class="mode-toggle theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon-sun"><i class="fa-solid fa-sun"></i></span>
+        <span class="theme-icon-moon"><i class="fa-solid fa-moon"></i></span>
+      </button>
+    </nav>
     <header>
-      <nav class="nav-bar" id="nav-container">
+      <nav class="nav-bar" id="nav-container" aria-label="Main">
         <ul class="nav-bar-container" id="nav-ul">
           <li><a id="hidden" href="index.html">Portfolio</a></li>
-          <li><a id="nav-res-ext1" href="#about-section">About</a></li>
-          <li><a id="nav-res-ext2" href="#skills-section">Skills</a></li>
-          <li><a id="nav-res-ext3" href="#projects-section">Projects</a></li>
-          <li><a id="nav-res-ext5" href="#certifications-section">Certificates</a></li>
-          <li><a id="nav-res-ext4" href="#contact-section">Contact</a></li>
+          <li><a id="nav-res-ext1" href="#about-section" data-section-link="about-section">About</a></li>
+          <li><a id="nav-res-ext2" href="#skills-section" data-section-link="skills-section">Skills</a></li>
+          <li><a id="nav-res-ext3" href="#projects-section" data-section-link="projects-section">Projects</a></li>
+          <li><a id="nav-res-ext5" href="#certifications-section" data-section-link="certifications-section">Certificates</a></li>
+          <li><a id="nav-res-ext4" href="#contact-section" data-section-link="contact-section">Contact</a></li>
           <li>
-            <button id="theme-toggle" class="mode-toggle" type="button" aria-label="Toggle theme">
+            <button class="mode-toggle theme-toggle" type="button" aria-label="Toggle theme">
               <span class="theme-icon-sun"><i class="fa-solid fa-sun"></i></span>
               <span class="theme-icon-moon"><i class="fa-solid fa-moon"></i></span>
             </button>

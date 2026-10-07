@@ -43,7 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const themeToggle = document.getElementById("theme-toggle");
+    // One toggle lives in the mobile navbar and one in the desktop icon rail.
+    const themeToggles = document.querySelectorAll(".theme-toggle");
     const html = document.documentElement;
     const body = document.body;
 
@@ -51,25 +52,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (theme === "light") {
             html.classList.replace("dark-mode", "light-mode") || html.classList.add("light-mode");
             body.classList.replace("dark-mode", "light-mode") || body.classList.add("light-mode");
-            if (themeToggle) themeToggle.setAttribute("aria-label", "Switch to dark mode");
+            themeToggles.forEach(btn => btn.setAttribute("aria-label", "Switch to dark mode"));
         } else {
             html.classList.replace("light-mode", "dark-mode") || html.classList.add("dark-mode");
             body.classList.replace("light-mode", "dark-mode") || body.classList.add("dark-mode");
-            if (themeToggle) themeToggle.setAttribute("aria-label", "Switch to light mode");
+            themeToggles.forEach(btn => btn.setAttribute("aria-label", "Switch to light mode"));
         }
     }
 
     const savedTheme = localStorage.getItem("theme") || "dark";
     updateTheme(savedTheme);
 
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
+    themeToggles.forEach(btn => {
+        btn.addEventListener("click", () => {
             const currentTheme = body.classList.contains("light-mode") ? "light" : "dark";
             const newTheme = currentTheme === "light" ? "dark" : "light";
             localStorage.setItem("theme", newTheme);
             updateTheme(newTheme);
         });
-    }
+    });
 
     const backToTopBtn = document.getElementById("backToTop");
     
@@ -150,56 +151,44 @@ window.addEventListener("resize", function () {
 
 window.dispatchEvent(new Event("resize"));
 
-window.addEventListener("scroll", () => {
-    const sections = [
-        document.getElementById("about-section"),
-        document.getElementById("skills-section"),
-        document.getElementById("projects-section"),
-        document.getElementById("certifications-section"),
-        document.getElementById("contact-section")
-    ];
+// Highlight the link for the section currently in view, in both the mobile
+// navbar and the desktop icon rail.
+function updateActiveSection() {
+    const sections = [...document.querySelectorAll("main > section[id]")];
+    if (sections.length === 0) return;
 
-    const navLinks = {
-        "about-section": document.getElementById("nav-res-ext1"),
-        "skills-section": document.getElementById("nav-res-ext2"),
-        "projects-section": document.getElementById("nav-res-ext3"),
-        "certifications-section": document.getElementById("nav-res-ext5"),
-        "contact-section": document.getElementById("nav-res-ext4")
-    };
-
-    let currentSectionId = "";
-    let minDistance = Infinity;
-    const triggerLine = 200;
-
+    const triggerLine = window.innerHeight * 0.4;
+    let current = sections[0];
     sections.forEach(section => {
-        if (section) {
-            const rect = section.getBoundingClientRect();
-            const distance = Math.abs(rect.top - triggerLine);
-
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    currentSectionId = section.id;
-                }
-            }
+        if (section.getBoundingClientRect().top <= triggerLine) {
+            current = section;
         }
     });
 
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 80) {
-        currentSectionId = "contact-section";
+    const root = document.documentElement;
+    if (window.innerHeight + window.scrollY >= root.scrollHeight - 4) {
+        current = sections[sections.length - 1];
     }
 
-    Object.keys(navLinks).forEach(id => {
-        const link = navLinks[id];
-        if (link) {
-            if (id === currentSectionId) {
-                link.classList.add("active-nav");
-            } else {
-                link.classList.remove("active-nav");
-            }
+    document.querySelectorAll("[data-section-link]").forEach(link => {
+        const active = link.dataset.sectionLink === current.id;
+        link.classList.toggle("is-active", active);
+        if (active) {
+            link.setAttribute("aria-current", "true");
+        } else {
+            link.removeAttribute("aria-current");
         }
     });
+}
+
+let activeSectionTicking = false;
+window.addEventListener("scroll", () => {
+    if (activeSectionTicking) return;
+    activeSectionTicking = true;
+    requestAnimationFrame(() => {
+        updateActiveSection();
+        activeSectionTicking = false;
+    });
 });
-
-
-
+window.addEventListener("resize", updateActiveSection);
+document.addEventListener("DOMContentLoaded", updateActiveSection);
