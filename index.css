@@ -1124,15 +1124,24 @@ header:not(.backToMain) {
 }
 
 @media only screen and (max-width: 750px) {
+  /* Fixed height (15px padding + 20px nav margin + 60px bar + 10px padding)
+     so the open menu overlays the page instead of pushing it down. Otherwise
+     closing the menu after tapping a link shifts the content mid-scroll and
+     the page overshoots the section. */
   header:not(.backToMain) {
+    height: 105px;
     padding-top: 15px;
     padding-bottom: 10px;
   }
 
+  /* Row 1 holds the brand, theme toggle and menu button; the section links
+     are auto-placed into the rows below it, so links can be added or
+     reordered in the HTML without touching this CSS. */
   .nav-bar-container {
     display: grid;
     grid-template-columns: 1fr auto auto;
     grid-template-rows: 60px;
+    grid-auto-rows: 50px;
     align-items: center;
     width: 90%;
     max-width: 500px;
@@ -1145,10 +1154,16 @@ header:not(.backToMain) {
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
+  /* 60px top row + 6 links x 50px + breathing room at the bottom */
   .nav-bar-container.menu-open {
-    height: 380px;
+    height: 430px;
     border-radius: 24px;
-    grid-template-rows: 60px repeat(5, 50px);
+    /* More opaque while open, since it now sits on top of page content */
+    background: rgba(20, 20, 20, 0.88);
+  }
+
+  .light-mode .nav-bar-container.menu-open {
+    background: rgba(245, 245, 245, 0.92);
   }
 
   .nav-bar-container li {
@@ -1157,14 +1172,14 @@ header:not(.backToMain) {
     padding: 0;
   }
 
-  .nav-bar-container li:nth-child(1) {
+  .nav-brand {
     grid-column: 1;
     grid-row: 1;
     display: flex;
     justify-content: flex-start;
   }
 
-  .nav-bar-container li:nth-child(7) {
+  .nav-theme {
     grid-column: 2;
     grid-row: 1;
     display: flex;
@@ -1172,29 +1187,21 @@ header:not(.backToMain) {
     margin-right: 15px;
   }
 
-  .nav-bar-container li:nth-child(8) {
+  .nav-menu-toggle {
     grid-column: 3;
     grid-row: 1;
     display: flex;
     justify-content: flex-end;
   }
 
-  .nav-bar-container li:nth-child(2),
-  .nav-bar-container li:nth-child(3),
-  .nav-bar-container li:nth-child(4),
-  .nav-bar-container li:nth-child(5),
-  .nav-bar-container li:nth-child(6) {
+  .nav-link-item {
     display: none;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
-  .nav-bar-container.menu-open li:nth-child(2),
-  .nav-bar-container.menu-open li:nth-child(3),
-  .nav-bar-container.menu-open li:nth-child(4),
-  .nav-bar-container.menu-open li:nth-child(5),
-  .nav-bar-container.menu-open li:nth-child(6) {
+  .nav-bar-container.menu-open .nav-link-item {
     display: flex;
     justify-content: center;
     grid-column: 1 / -1;
@@ -1202,22 +1209,20 @@ header:not(.backToMain) {
     transform: translateY(0);
   }
 
-  .nav-bar-container.menu-open li:nth-child(2) { grid-row: 2; transition-delay: 0.05s; }
-  .nav-bar-container.menu-open li:nth-child(3) { grid-row: 3; transition-delay: 0.10s; }
-  .nav-bar-container.menu-open li:nth-child(4) { grid-row: 4; transition-delay: 0.15s; }
-  .nav-bar-container.menu-open li:nth-child(5) { grid-row: 5; transition-delay: 0.20s; }
-  .nav-bar-container.menu-open li:nth-child(6) { grid-row: 6; transition-delay: 0.25s; }
+  /* Staggered fade-in; browsers without "of S" support just skip the delay */
+  .nav-link-item:nth-child(1 of .nav-link-item) { transition-delay: 0.05s; }
+  .nav-link-item:nth-child(2 of .nav-link-item) { transition-delay: 0.10s; }
+  .nav-link-item:nth-child(3 of .nav-link-item) { transition-delay: 0.15s; }
+  .nav-link-item:nth-child(4 of .nav-link-item) { transition-delay: 0.20s; }
+  .nav-link-item:nth-child(5 of .nav-link-item) { transition-delay: 0.25s; }
+  .nav-link-item:nth-child(6 of .nav-link-item) { transition-delay: 0.30s; }
 
   #nav-ul {
     font-weight: 600;
   }
 
-  #nav-res-ext1,
-  #nav-res-ext2,
-  #nav-res-ext3,
-  #nav-res-ext4,
-  #nav-res-ext5 {
-    display: inline-flex !important;
+  .nav-bar .nav-link-item a {
+    display: inline-flex;
     font-size: 16px;
     padding: 10px 0;
     letter-spacing: 1px;
