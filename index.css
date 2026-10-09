@@ -576,6 +576,11 @@ header:not(.backToMain) {
   font-size: 14px;
 }
 
+/* Only wrap at the " · " separators, never inside a part */
+.details-heading span {
+  white-space: nowrap;
+}
+
 .about-bio {
   max-width: 400px;
   margin: 14px 0 6px;
@@ -637,6 +642,68 @@ header:not(.backToMain) {
 
 .social-icons a {
   color: var(--text-color);
+}
+
+/* Quick facts under the hero links; each one jumps to its section */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 22px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.25s ease;
+}
+
+.hero-stat + .hero-stat {
+  border-left: 1px solid var(--rail-line);
+}
+
+.hero-stat-value {
+  font-family: "PT Mono", monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.hero-stat-label {
+  font-family: "PT Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.hero-stat:hover .hero-stat-label {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+@media only screen and (max-width: 750px) {
+  .hero-stat {
+    padding: 0 12px;
+  }
+
+  .hero-stat-value {
+    font-size: 19px;
+  }
+
+  .hero-stat-label {
+    font-size: 10.5px;
+    letter-spacing: 1px;
+  }
+}
+
+/* "scroll" hint at the bottom of the desktop hero */
+.scroll-cue {
+  display: none;
 }
 
 .education-heading,
@@ -1609,5 +1676,95 @@ header:not(.backToMain) {
   to {
     opacity: 1;
     translate: none;
+  }
+}
+
+/* Desktop hero: scale the content up to fill the full-height landing screen.
+   clamp() keeps the name inside its half-width column on small laptops. */
+@media only screen and (min-width: 751px) {
+  .main-about {
+    position: relative;
+  }
+
+  .name-heading {
+    font-size: clamp(30px, 2.7vw, 40px);
+  }
+
+  .details-heading {
+    font-size: 15px;
+    margin-top: 4px;
+  }
+
+  .about-bio {
+    max-width: 450px;
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    margin-top: 16px;
+  }
+
+  .hero-actions .project-btn {
+    padding: 9px 22px;
+  }
+
+  .social-icons {
+    font-size: 25px;
+  }
+
+  .about-container-2 {
+    height: auto;
+    min-height: 360px;
+  }
+
+  .about-container-2 img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: "PT Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    opacity: 0.5;
+    text-decoration: none;
+    transition: opacity 0.25s ease, color 0.25s ease;
+  }
+
+  .scroll-cue:hover {
+    opacity: 1;
+    color: var(--accent-color);
+  }
+}
+
+/* On short screens the hero content reaches the bottom, so the cue would crowd it */
+@media only screen and (max-height: 720px) {
+  .scroll-cue {
+    display: none !important;
+  }
+}
+
+@media (min-width: 751px) and (prefers-reduced-motion: no-preference) {
+  .scroll-cue i {
+    animation: scroll-cue-bob 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes scroll-cue-bob {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 6px;
   }
 }
