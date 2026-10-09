@@ -288,6 +288,17 @@ header:not(.backToMain) {
   min-height: auto;
 }
 
+/* Desktop: the About section is the landing hero, filling most of the first screen. */
+@media only screen and (min-width: 751px) {
+  .main-about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    margin-top: 40px;
+  }
+}
+
 .main-education {
   scroll-margin-top: 100px;
   border-radius: 10px;
@@ -562,23 +573,27 @@ header:not(.backToMain) {
   color: var(--text-color);
   font-weight: 700;
   font-family: monospace;
-  width: 220px;
   font-size: 14px;
 }
 
-.about-container {
-  display: flex;
-  justify-content: center;
+.about-bio {
+  max-width: 400px;
+  margin: 14px 0 6px;
+  font-family: ubuntu, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.85;
 }
 
 .about-container-0 {
   display: flex;
   width: 100%;
-  height: 360px;
+  min-height: 360px;
 }
 
 .about-container-1 {
-  height: 360px;
+  min-height: 360px;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -587,21 +602,17 @@ header:not(.backToMain) {
   text-align: center;
 }
 
-.resume-btn {
-  color: var(--text-color);
-  font-family: monospace;
-  font-size: 17px;
-  text-decoration: none;
-  border: 1px solid var(--accent-color);
-  padding: 10px 22px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  margin-top: 15px;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
 }
 
-.resume-btn:hover {
-  background: var(--accent-color);
-  color: black;
+.hero-actions .project-btn i {
+  font-size: 11px;
+  margin-left: 4px;
 }
 
 .about-container-2 {
@@ -617,18 +628,17 @@ header:not(.backToMain) {
 }
 
 .social-icons {
-  margin-top: 10px;
-  font-size: 25px;
-  width: 260px;
+  margin-top: 20px;
+  font-size: 24px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 26px;
 }
 
 .social-icons a {
   color: var(--text-color);
 }
 
-.about-heading,
 .education-heading,
 .skills-heading,
 .projects-heading,
@@ -645,6 +655,21 @@ header:not(.backToMain) {
   justify-content: center;
   width: 100%;
   margin-bottom: 40px;
+}
+
+.skill-group {
+  margin-bottom: 18px;
+}
+
+.skill-group-title {
+  font-family: "PT Mono", monospace;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  opacity: 0.8;
 }
 
 .skills-badges-grid {
@@ -760,6 +785,7 @@ header:not(.backToMain) {
   display: flex;
   justify-content: center;
   margin-top: 120px;
+  margin-bottom: 40px;
 }
 
 .projects-container-span {
@@ -1257,6 +1283,7 @@ header:not(.backToMain) {
   .about-container-2 {
     width: 100%;
     height: auto;
+    min-height: auto;
   }
 
   #about-container-2-img {
@@ -1266,11 +1293,6 @@ header:not(.backToMain) {
 
   .details-heading {
     font-size: 13px;
-  }
-
-  .about-container {
-    margin-bottom: 50px;
-    width: 100%;
   }
 
   .main-skills {
@@ -1337,7 +1359,6 @@ header:not(.backToMain) {
     transform: translateY(5px) scale(1.15);
   }
 
-  .about-heading,
   .education-heading,
   .skills-heading,
   .projects-heading,
@@ -1563,5 +1584,30 @@ header:not(.backToMain) {
   .name-heading {
     animation: none;
     border-right: none;
+  }
+}
+
+/* Scroll-reveal: elements tagged .reveal fade up as they enter the viewport.
+   Uses the individual `translate` property and an animation (not transform or
+   transition), so it doesn't fight the hover transforms and transitions on
+   cards and badges. */
+@media (prefers-reduced-motion: no-preference) {
+  .js-reveal .reveal:not(.is-visible) {
+    opacity: 0;
+  }
+
+  .js-reveal .reveal.is-visible {
+    animation: reveal-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s) both;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+  to {
+    opacity: 1;
+    translate: none;
   }
 }

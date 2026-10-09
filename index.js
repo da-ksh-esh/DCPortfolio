@@ -193,3 +193,35 @@ window.addEventListener("scroll", () => {
 });
 window.addEventListener("resize", updateActiveSection);
 document.addEventListener("DOMContentLoaded", updateActiveSection);
+
+// Scroll reveal: fade sections in as they enter the viewport. The inline
+// <head> script only adds .js-reveal when IntersectionObserver exists, so
+// without it nothing is ever hidden.
+document.addEventListener("DOMContentLoaded", () => {
+    if (!document.documentElement.classList.contains("js-reveal")) return;
+
+    // Once the fade-in finishes, drop the reveal classes so the element is
+    // back to normal. Leaving the animation applied keeps its opacity
+    // "animating" forever, which breaks Chrome's backdrop-filter blur on the
+    // glass pills and cards inside it (smeared/dark patches on hover).
+    function finishReveal(event) {
+        if (event.target !== event.currentTarget || event.animationName !== "reveal-in") return;
+        const el = event.currentTarget;
+        el.classList.remove("reveal", "is-visible");
+        el.style.removeProperty("--reveal-delay");
+        el.removeEventListener("animationend", finishReveal);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        const entering = entries.filter(entry => entry.isIntersecting);
+        entering.forEach((entry, i) => {
+            // Stagger items that enter together (e.g. a row of cards).
+            entry.target.style.setProperty("--reveal-delay", `${i * 0.08}s`);
+            entry.target.addEventListener("animationend", finishReveal);
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+        });
+    }, { rootMargin: "0px 0px -8% 0px" });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+});

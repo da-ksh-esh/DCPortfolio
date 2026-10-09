@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <!-- GitHub Pages serves this file for any missing URL, at any depth, so
+         every asset path is absolute to the site root (/DCPortfolio/). -->
+    <link rel="icon" href="/DCPortfolio/images/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/DCPortfolio/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.classList.add(theme + '-mode');
+      })();
+    </script>
+    <title>Page not found | Dakshesh Chauhan</title>
+    <style>
+      .notfound {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding: 40px 16px;
+        text-align: center;
+      }
+
+      .notfound-code {
+        font-family: "PT Mono", monospace;
+        font-size: 110px;
+        line-height: 1;
+        font-weight: 700;
+        color: var(--accent-color);
+        text-shadow: 0 0 30px rgba(68, 241, 166, 0.35);
+      }
+
+      .notfound-title {
+        font-family: ubuntu, sans-serif;
+        font-size: 24px;
+        color: var(--text-color);
+      }
+
+      .notfound-terminal {
+        width: 100%;
+        max-width: 520px;
+        padding: 18px 20px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        font-family: "PT Mono", monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        text-align: left;
+        color: var(--text-color);
+        overflow-wrap: anywhere;
+      }
+
+      .light-mode .notfound-terminal {
+        background: rgba(0, 0, 0, 0.03);
+        border-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .notfound-prompt {
+        color: var(--accent-color);
+      }
+
+      .notfound-error {
+        color: #ff6b6b;
+      }
+
+      .light-mode .notfound-error {
+        color: #d63b3b;
+      }
+
+      .notfound-cursor {
+        display: inline-block;
+        width: 8px;
+        height: 16px;
+        vertical-align: text-bottom;
+        background: var(--accent-color);
+        animation: notfound-blink 1s step-end infinite;
+      }
+
+      @keyframes notfound-blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .notfound .project-links {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .notfound-code {
+          font-size: 80px;
+        }
+
+        .notfound-title {
+          font-size: 20px;
+        }
+
+        .notfound-terminal {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="notfound">
+      <p class="notfound-code" aria-hidden="true">404</p>
+      <h1 class="notfound-title">Page not found</h1>
+      <div class="notfound-terminal">
+        <p><span class="notfound-prompt">dakshesh@portfolio:~$</span> cd <span id="missing-path">/that-page</span></p>
+        <p class="notfound-error">cd: no such file or directory</p>
+        <p><span class="notfound-prompt">dakshesh@portfolio:~$</span> <span class="notfound-cursor" aria-hidden="true"></span></p>
+      </div>
+      <div class="project-links">
+        <a href="/DCPortfolio/" class="project-btn">Back to home</a>
+        <a href="/DCPortfolio/projects.html" class="project-btn secondary">View projects</a>
+      </div>
+    </main>
+    <script>
+      // Show the path the visitor tried (textContent, so it's never parsed as HTML).
+      let path = location.pathname;
+      try {
+        path = decodeURIComponent(path);
+      } catch (e) {
+        // Malformed escape (e.g. a stray "%"): show the raw path instead.
+      }
+      document.getElementById("missing-path").textContent = path.replace(/^\/DCPortfolio/, "") || "/";
+    </script>
+  </body>
+</html>
