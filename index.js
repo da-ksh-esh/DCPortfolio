@@ -225,3 +225,182 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 });
+
+// Landing-page grid background: around the cursor the grid lights up and bulges
+// out slightly, like a lens. The dim, flat grid is plain CSS (.hero-bg-grid);
+// this draws only the lit, warped patch on a canvas layered over it.
+(() => {
+    const grid = document.querySelector(".hero-bg-grid");
+    const canvas = grid && grid.querySelector("canvas.hero-grid-lit");
+    if (!canvas) return;
+    // Touch screens have no hovering cursor, so the grid just stays dim there.
+    if (!window.matchMedia("(hover: hover)").matches) return;
+
+    const ctx = canvas.getContext("2d");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const CELL = 44; // must match background-size of .hero-bg-grid in index.css
+    const RADIUS = 130; // how far the glow reaches from the cursor
+    const BULGE = reduceMotion ? 0 : 0.08; // how much cells near the cursor swell (kept subtle)
+    const STEP = 4; // px between sample points along each line
+
+    let width = 0;
+    let height = 0;
+    let rgb = "68, 241, 166";
+
+    let pointerX = null; // last cursor position in the viewport
+    let pointerY = null;
+    let targetX = 0; // where the bump should be, relative to the grid
+    let targetY = 0;
+    let bumpX = 0; // where it currently is
+    let bumpY = 0;
+    let targetLevel = 0; // 1 while the cursor is over the grid, else 0
+    let level = 0; // eased 0..1: drives both the glow and the pop-out
+    let placed = false;
+    let rafId = 0;
+
+    function readAccent() {
+        const hex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim();
+        const m = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
+        if (m) rgb = m.slice(1).map((h) => parseInt(h, 16)).join(", ");
+    }
+
+    function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = canvas.clientWidth;
+        height = canvas.clientHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        draw();
+    }
+
+    // Push a point away from the bump centre. The push is zero at the centre
+    // and at the edge of the radius, so the warped patch meets the flat grid.
+    function warp(x, y) {
+        const dx = x - bumpX;
+        const dy = y - bumpY;
+        const t = Math.hypot(dx, dy) / RADIUS;
+        if (t >= 1) return [x, y];
+        const falloff = (1 - t * t) ** 2;
+        const scale = 1 + BULGE * level * falloff;
+        return [bumpX + dx * scale, bumpY + dy * scale];
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        if (level < 0.01) return;
+
+        const fade = (alpha) => {
+            const g = ctx.createRadialGradient(bumpX, bumpY, 0, bumpX, bumpY, RADIUS);
+            g.addColorStop(0, `rgba(${rgb}, ${alpha * level})`);
+            g.addColorStop(0.55, `rgba(${rgb}, ${alpha * 0.45 * level})`);
+            g.addColorStop(1, `rgba(${rgb}, 0)`);
+            return g;
+        };
+
+        // Soft tint under the lines
+        ctx.fillStyle = fade(0.035);
+        ctx.fillRect(bumpX - RADIUS, bumpY - RADIUS, RADIUS * 2, RADIUS * 2);
+
+        ctx.strokeStyle = fade(0.5);
+        ctx.lineWidth = 1 + 0.15 * level;
+        ctx.shadowColor = `rgba(${rgb}, ${0.35 * level})`;
+        ctx.shadowBlur = 4;
+
+        // The CSS grid is centred horizontally and starts at the top edge.
+        const offsetX = (((width / 2 - CELL / 2) % CELL) + CELL) % CELL + 0.5;
+        const offsetY = 0.5;
+
+        // Vertical lines within reach of the bump
+        for (let x = offsetX + Math.ceil((bumpX - RADIUS - offsetX) / CELL) * CELL; x <= bumpX + RADIUS; x += CELL) {
+            const half = Math.sqrt(Math.max(RADIUS * RADIUS - (x - bumpX) ** 2, 0));
+            ctx.beginPath();
+            for (let y = bumpY - half; y <= bumpY + half + STEP; y += STEP) {
+                const [px, py] = warp(x, Math.min(y, bumpY + half));
+                ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+        }
+
+        // Horizontal lines
+        for (let y = offsetY + Math.ceil((bumpY - RADIUS - offsetY) / CELL) * CELL; y <= bumpY + RADIUS; y += CELL) {
+            const half = Math.sqrt(Math.max(RADIUS * RADIUS - (y - bumpY) ** 2, 0));
+            ctx.beginPath();
+            for (let x = bumpX - half; x <= bumpX + half + STEP; x += STEP) {
+                const [px, py] = warp(Math.min(x, bumpX + half), y);
+                ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+        }
+
+        ctx.shadowBlur = 0;
+    }
+
+    function tick() {
+        rafId = 0;
+        // Ease towards the cursor and towards the target glow level, so the
+        // bump trails the cursor slightly and rises/settles instead of snapping.
+        const follow = reduceMotion ? 1 : 0.2;
+        const rise = reduceMotion ? 1 : 0.12;
+        bumpX += (targetX - bumpX) * follow;
+        bumpY += (targetY - bumpY) * follow;
+        level += (targetLevel - level) * rise;
+        draw();
+        const moving = Math.abs(targetX - bumpX) + Math.abs(targetY - bumpY) > 0.3;
+        const changing = Math.abs(targetLevel - level) > 0.005;
+        if (moving || changing) {
+            rafId = requestAnimationFrame(tick);
+        } else if (targetLevel === 0) {
+            level = 0;
+            draw();
+        }
+    }
+
+    function retarget() {
+        const rect = canvas.getBoundingClientRect();
+        targetX = pointerX - rect.left;
+        targetY = pointerY - rect.top;
+        targetLevel = pointerY >= rect.top && pointerY <= rect.bottom ? 1 : 0;
+        if (!placed) {
+            // First move: rise under the cursor instead of sliding in from the corner.
+            bumpX = targetX;
+            bumpY = targetY;
+            placed = true;
+        }
+        if (!rafId) rafId = requestAnimationFrame(tick);
+    }
+
+    window.addEventListener("pointermove", (e) => {
+        if (e.pointerType === "touch") return;
+        pointerX = e.clientX;
+        pointerY = e.clientY;
+        retarget();
+    });
+
+    // The grid scrolls with the page, so the spot under a still cursor changes.
+    window.addEventListener("scroll", () => {
+        if (pointerX !== null) retarget();
+    }, { passive: true });
+
+    // Settle back to flat when the cursor leaves the window.
+    document.documentElement.addEventListener("pointerleave", () => {
+        targetLevel = 0;
+        if (!rafId) rafId = requestAnimationFrame(tick);
+    });
+
+    // Follow light/dark theme changes.
+    new MutationObserver(() => {
+        readAccent();
+        draw();
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resize, 150);
+    });
+
+    readAccent();
+    resize();
+})();

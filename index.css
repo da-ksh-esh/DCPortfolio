@@ -1694,6 +1694,42 @@ header:not(.backToMain) {
   }
 }
 
+/* Landing-page background. The layer covers the first screen only, sits behind
+   all content, ignores clicks and fades out towards the bottom. */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+
+/* Graph-paper grid: barely visible everywhere. Around the cursor it lights up
+   and bulges out; index.js draws that patch on the canvas inside. */
+.hero-bg-grid {
+  --grid-dim: rgba(68, 241, 166, 0.045);
+  background-image:
+    linear-gradient(var(--grid-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-dim) 1px, transparent 1px);
+  background-size: 44px 44px; /* keep in sync with CELL in index.js */
+  background-position: center top;
+}
+
+.light-mode .hero-bg-grid {
+  --grid-dim: rgba(20, 130, 85, 0.09);
+}
+
+.hero-grid-lit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Scroll-reveal: elements tagged .reveal fade up as they enter the viewport.
    Uses the individual `translate` property and an animation (not transform or
    transition), so it doesn't fight the hover transforms and transitions on
