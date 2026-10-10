@@ -615,7 +615,7 @@ header:not(.backToMain) {
   margin-top: 14px;
 }
 
-.hero-actions .project-btn i {
+.project-btn i {
   font-size: 11px;
   margin-left: 4px;
 }
@@ -856,7 +856,7 @@ header:not(.backToMain) {
 }
 
 .projects-container-span {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--accent-color);
 }
 
@@ -910,23 +910,54 @@ header:not(.backToMain) {
   color: var(--text-color);
 }
 
-.more-projects {
-  font-family: ubuntu;
-  font-size: 14px;
-  text-align: center;
-}
-
-.more-projects a {
-  text-decoration: none;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  color: var(--text-color);
-  display: inline-block;
-}
-
-.more-projects a:hover {
+/* Category label above the project title, e.g. "Machine Learning" */
+.project-category {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--accent-color);
+  background: var(--rail-accent-soft);
   color: var(--accent-color);
-  text-shadow: 0 0 8px var(--accent-color);
-  transform: scale(1.1);
+  font-family: monospace;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* "Tech:" label followed by one pill per technology */
+.project-tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.project-tag {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.light-mode .project-tag {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.more-projects {
+  display: flex;
+  justify-content: center;
 }
 
 .contact-container {
@@ -1212,6 +1243,15 @@ header:not(.backToMain) {
     width: 90%;
     align-items: center;
     text-align: center;
+  }
+
+  .project-category {
+    align-self: center;
+  }
+
+  .project-tech-row,
+  .project-tags {
+    justify-content: center;
   }
 
 }
