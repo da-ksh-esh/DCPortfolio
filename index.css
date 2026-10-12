@@ -1007,6 +1007,15 @@ header:not(.backToMain) {
   letter-spacing: 0.5px;
 }
 
+a.vis-value {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.vis-value:hover {
+  color: var(--accent-color);
+}
+
 .visualizer-email .copy-icon {
   font-size: 15px;
   opacity: 0.4;
