@@ -33,9 +33,9 @@
     <nav class="icon-rail" aria-label="Sections">
       <ul>
         <li><a href="#about-section" data-section-link="about-section"><i class="fa-solid fa-user" aria-hidden="true"></i><span class="icon-tip">About</span></a></li>
-        <li><a href="#education-section" data-section-link="education-section"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><span class="icon-tip">Education</span></a></li>
-        <li><a href="#skills-section" data-section-link="skills-section"><i class="fa-solid fa-code" aria-hidden="true"></i><span class="icon-tip">Skills</span></a></li>
         <li><a href="#projects-section" data-section-link="projects-section"><i class="fa-solid fa-folder-open" aria-hidden="true"></i><span class="icon-tip">Projects</span></a></li>
+        <li><a href="#skills-section" data-section-link="skills-section"><i class="fa-solid fa-code" aria-hidden="true"></i><span class="icon-tip">Skills</span></a></li>
+        <li><a href="#education-section" data-section-link="education-section"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><span class="icon-tip">Education</span></a></li>
         <li><a href="#certifications-section" data-section-link="certifications-section"><i class="fa-solid fa-award" aria-hidden="true"></i><span class="icon-tip">Certificates</span></a></li>
         <li><a href="#contact-section" data-section-link="contact-section"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="icon-tip">Contact</span></a></li>
       </ul>
@@ -50,9 +50,9 @@
         <ul class="nav-bar-container" id="nav-ul">
           <li class="nav-brand"><a id="hidden" href="index.html">Portfolio</a></li>
           <li class="nav-link-item"><a href="#about-section" data-section-link="about-section">About</a></li>
-          <li class="nav-link-item"><a href="#education-section" data-section-link="education-section">Education</a></li>
-          <li class="nav-link-item"><a href="#skills-section" data-section-link="skills-section">Skills</a></li>
           <li class="nav-link-item"><a href="#projects-section" data-section-link="projects-section">Projects</a></li>
+          <li class="nav-link-item"><a href="#skills-section" data-section-link="skills-section">Skills</a></li>
+          <li class="nav-link-item"><a href="#education-section" data-section-link="education-section">Education</a></li>
           <li class="nav-link-item"><a href="#certifications-section" data-section-link="certifications-section">Certificates</a></li>
           <li class="nav-link-item"><a href="#contact-section" data-section-link="contact-section">Contact</a></li>
           <li class="nav-theme">
@@ -96,43 +96,87 @@
             <img id="about-container-2-img" src="images/3426526-removebg-preview.png" alt="Profile Illustration">
           </div>
         </div>
-        <a href="#education-section" class="scroll-cue" aria-label="Scroll to Education">
+        <a href="#projects-section" class="scroll-cue" aria-label="Scroll to Projects">
           <span>scroll</span>
           <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
         </a>
       </section>
-      <section id="education-section" class="main-education">
-        <div class="education-container reveal">
-          <h2 class="education-heading">EDUCATION</h2>
+      <section id="projects-section" class="main-projects">
+        <div class="projects-container reveal">
+          <h2 class="projects-heading">PROJECTS</h2>
         </div>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2024 - 2028</div>
-            <div class="timeline-content">
-              <h3>B.Tech in Artificial Intelligence & Machine Learning</h3>
-              <p>Symbiosis Institute of Technology, Pune</p>
-              <span class="score-badge">CGPA: 8.28</span>
+        <article class="projects-container-0 reveal">
+          <a class="projects-container-2" href="https://github.com/da-ksh-esh/Fake-Review-Detection-System" target="_blank" rel="noopener noreferrer" aria-label="View the Fake Review Detection code on GitHub">
+            <img src="images/fake-review-detection.png" loading="lazy" alt="Fake Review Detector web app showing a prediction">
+          </a>
+          <div class="projects-container-3">
+            <span class="project-category">Machine Learning</span>
+            <h3>Fake Review Detection</h3>
+            <p>An end-to-end machine learning and deep learning pipeline that detects fake reviews in the Yelp dataset, with a Flask web app for predictions.</p>
+            <div class="project-tech-row">
+              <span class="projects-container-span">Tech:</span>
+              <ul class="project-tags">
+                <li class="project-tag">Python</li>
+                <li class="project-tag">scikit-learn</li>
+                <li class="project-tag">TensorFlow</li>
+                <li class="project-tag">NLTK</li>
+                <li class="project-tag">Flask</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/da-ksh-esh/Fake-Review-Detection-System" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
             </div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2023 - 2024</div>
-            <div class="timeline-content">
-              <h3>Class 12th (CBSE)</h3>
-              <p>Delhi Public School, Greater Noida</p>
-              <span class="score-badge">Percentage: 86%</span>
+        </article>
+        <article class="projects-container-1 reveal">
+          <a class="projects-container-2" href="https://cloudshare-cyof.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Open the CloudShare live demo">
+            <img src="images/cloud-share.png" loading="lazy" alt="CloudShare Screenshot">
+          </a>
+          <div class="projects-container-3">
+            <span class="project-category">Full-stack</span>
+            <h3>CloudShare</h3>
+            <p>A simple privacy-focused file sharing application designed for seamless cross-device synchronization without the need for traditional user accounts.</p>
+            <div class="project-tech-row">
+              <span class="projects-container-span">Tech:</span>
+              <ul class="project-tags">
+                <li class="project-tag">HTML</li>
+                <li class="project-tag">CSS</li>
+                <li class="project-tag">JavaScript</li>
+                <li class="project-tag">Flask</li>
+                <li class="project-tag">SQLite</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://cloudshare-cyof.onrender.com" target="_blank" rel="noopener noreferrer" class="project-btn">Live Demo</a>
+              <a href="https://github.com/da-ksh-esh/CloudShare" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
             </div>
           </div>
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">2021 - 2022</div>
-            <div class="timeline-content">
-              <h3>Class 10th (CBSE)</h3>
-              <p>Delhi Public School, Greater Noida</p>
-              <span class="score-badge">Percentage: 95.2%</span>
+        </article>
+        <article class="projects-container-0 reveal">
+          <a class="projects-container-2" href="https://github.com/da-ksh-esh/NexaKind" target="_blank" rel="noopener noreferrer" aria-label="View the NexaKind code on GitHub">
+            <img src="images/nexakind.webp" loading="lazy" alt="NexaKind showing active needs listed by orphanage">
+          </a>
+          <div class="projects-container-3">
+            <span class="project-category">Full-stack</span>
+            <h3>NexaKind</h3>
+            <p>A donation platform that connects donors with the verified, real-time needs of orphanages, and reroutes surplus items between NGOs to reduce waste.</p>
+            <div class="project-tech-row">
+              <span class="projects-container-span">Tech:</span>
+              <ul class="project-tags">
+                <li class="project-tag">Python</li>
+                <li class="project-tag">Flask</li>
+                <li class="project-tag">MySQL</li>
+                <li class="project-tag">Bootstrap</li>
+                <li class="project-tag">Docker</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/da-ksh-esh/NexaKind" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
             </div>
           </div>
+        </article>
+        <div class="more-projects reveal">
+          <a href="projects.html" class="project-btn secondary">View all projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
       </section>
       <section id="skills-section" class="main-skills">
@@ -231,84 +275,40 @@
           </div>
         </div>
       </section>
-      <section id="projects-section" class="main-projects">
-        <div class="projects-container reveal">
-          <h2 class="projects-heading">PROJECTS</h2>
+      <section id="education-section" class="main-education">
+        <div class="education-container reveal">
+          <h2 class="education-heading">EDUCATION</h2>
         </div>
-        <article class="projects-container-0 reveal">
-          <a class="projects-container-2" href="https://github.com/da-ksh-esh/Fake-Review-Detection-System" target="_blank" rel="noopener noreferrer" aria-label="View the Fake Review Detection code on GitHub">
-            <img src="images/fake-review-detection.png" loading="lazy" alt="Fake Review Detector web app showing a prediction">
-          </a>
-          <div class="projects-container-3">
-            <span class="project-category">Machine Learning</span>
-            <h3>• Fake Review Detection</h3>
-            <p>An end-to-end machine learning and deep learning pipeline that detects fake reviews in the Yelp dataset, with a Flask web app for predictions.</p>
-            <div class="project-tech-row">
-              <span class="projects-container-span">Tech:</span>
-              <ul class="project-tags">
-                <li class="project-tag">Python</li>
-                <li class="project-tag">scikit-learn</li>
-                <li class="project-tag">TensorFlow</li>
-                <li class="project-tag">NLTK</li>
-                <li class="project-tag">Flask</li>
-              </ul>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/da-ksh-esh/Fake-Review-Detection-System" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024 - 2028</div>
+            <div class="timeline-content">
+              <h3>B.Tech in Artificial Intelligence & Machine Learning</h3>
+              <p>Symbiosis Institute of Technology, Pune</p>
+              <span class="score-badge">CGPA: 8.28</span>
             </div>
           </div>
-        </article>
-        <article class="projects-container-1 reveal">
-          <a class="projects-container-2" href="https://cloudshare-cyof.onrender.com" target="_blank" rel="noopener noreferrer" aria-label="Open the CloudShare live demo">
-            <img src="images/cloud-share.png" loading="lazy" alt="CloudShare Screenshot">
-          </a>
-          <div class="projects-container-3">
-            <span class="project-category">Full-stack</span>
-            <h3>• CloudShare</h3>
-            <p>A simple privacy-focused file sharing application designed for seamless cross-device synchronization without the need for traditional user accounts.</p>
-            <div class="project-tech-row">
-              <span class="projects-container-span">Tech:</span>
-              <ul class="project-tags">
-                <li class="project-tag">HTML</li>
-                <li class="project-tag">CSS</li>
-                <li class="project-tag">JavaScript</li>
-                <li class="project-tag">Flask</li>
-                <li class="project-tag">SQLite</li>
-              </ul>
-            </div>
-            <div class="project-links">
-              <a href="https://cloudshare-cyof.onrender.com" target="_blank" rel="noopener noreferrer" class="project-btn">Live Demo</a>
-              <a href="https://github.com/da-ksh-esh/CloudShare" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023 - 2024</div>
+            <div class="timeline-content">
+              <h3>Class 12th (CBSE)</h3>
+              <p>Delhi Public School, Greater Noida</p>
+              <span class="score-badge">Percentage: 86%</span>
             </div>
           </div>
-        </article>
-        <article class="projects-container-0 reveal">
-          <a class="projects-container-2" href="https://github.com/da-ksh-esh/NexaKind" target="_blank" rel="noopener noreferrer" aria-label="View the NexaKind code on GitHub">
-            <img src="images/nexakind.webp" loading="lazy" alt="NexaKind showing active needs listed by orphanage">
-          </a>
-          <div class="projects-container-3">
-            <span class="project-category">Full-stack</span>
-            <h3>• NexaKind</h3>
-            <p>A donation platform that connects donors with the verified, real-time needs of orphanages, and reroutes surplus items between NGOs to reduce waste.</p>
-            <div class="project-tech-row">
-              <span class="projects-container-span">Tech:</span>
-              <ul class="project-tags">
-                <li class="project-tag">Python</li>
-                <li class="project-tag">Flask</li>
-                <li class="project-tag">MySQL</li>
-                <li class="project-tag">Bootstrap</li>
-                <li class="project-tag">Docker</li>
-              </ul>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/da-ksh-esh/NexaKind" target="_blank" rel="noopener noreferrer" class="project-btn secondary">View Code</a>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2021 - 2022</div>
+            <div class="timeline-content">
+              <h3>Class 10th (CBSE)</h3>
+              <p>Delhi Public School, Greater Noida</p>
+              <span class="score-badge">Percentage: 95.2%</span>
             </div>
           </div>
-        </article>
-        <div class="more-projects reveal">
-          <a href="projects.html" class="project-btn secondary">View all projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
-      </section> 
+      </section>
       <section id="certifications-section" class="main-certifications">
         <div class="certifications-container reveal">
           <h2 class="certifications-heading">CERTIFICATIONS</h2>
@@ -403,7 +403,8 @@
         </div>
       </section>
     </main>
-    <footer>
+    <footer class="site-footer">
+      <p class="site-footer-text">© 2026 Dakshesh Chauhan</p>
       <button id="backToTop" type="button" aria-label="Back to top"><i class="fa-solid fa-angle-up"></i></button>
     </footer>
   </body>

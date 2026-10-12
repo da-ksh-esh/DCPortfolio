@@ -851,7 +851,6 @@ header:not(.backToMain) {
 .projects-container {
   display: flex;
   justify-content: center;
-  margin-top: 120px;
   margin-bottom: 40px;
 }
 
@@ -1216,6 +1215,19 @@ a.vis-value:hover {
   }
 }
 
+.site-footer {
+  padding: 28px 16px 34px;
+  text-align: center;
+}
+
+.site-footer-text {
+  font-family: "PT Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
 #backToTop {
   position: fixed;
   bottom: 25px;
@@ -1250,17 +1262,6 @@ a.vis-value:hover {
 
   .projects-container-3 {
     width: 90%;
-    align-items: center;
-    text-align: center;
-  }
-
-  .project-category {
-    align-self: center;
-  }
-
-  .project-tech-row,
-  .project-tags {
-    justify-content: center;
   }
 
 }
@@ -1421,7 +1422,7 @@ a.vis-value:hover {
 
   .main-projects {
     height: auto;
-    padding-bottom: 40px;
+    margin-top: 80px;
   }
 
   .projects-container-1 {
@@ -1430,10 +1431,6 @@ a.vis-value:hover {
 
   .projects-container {
     margin-bottom: 20px;
-  }
-
-  .more-projects {
-    margin-top: 80px;
   }
 
   .visualizer-details {
