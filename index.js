@@ -404,3 +404,80 @@ document.addEventListener("DOMContentLoaded", () => {
     readAccent();
     resize();
 })();
+
+// Projects: on wide screens a card with the project's screenshot and
+// description follows the cursor over the index rows. On phones the same
+// content is shown inline by CSS and this does nothing.
+(() => {
+    const list = document.querySelector(".pd-list");
+    const preview = document.querySelector(".pd-preview");
+    if (list && preview) {
+        const previewEnabled = () => getComputedStyle(preview).display !== "none";
+        let targetX = 0;
+        let targetY = 0;
+        let x = 0;
+        let y = 0;
+        let placed = false;
+        let rafId = 0;
+
+        const tick = () => {
+            rafId = 0;
+            const ease = prefersReducedMotion.matches ? 1 : 0.22;
+            x += (targetX - x) * ease;
+            y += (targetY - y) * ease;
+            preview.style.translate = `${x}px ${y}px`;
+            if (Math.abs(targetX - x) + Math.abs(targetY - y) > 0.4) rafId = requestAnimationFrame(tick);
+        };
+
+        // Sit just below-right of the point, flipping/clamping at the screen edges.
+        const aim = (pointX, pointY) => {
+            const pad = 16;
+            const w = preview.offsetWidth;
+            const h = preview.offsetHeight;
+            let nextX = pointX + 28;
+            let nextY = pointY + 24;
+            if (nextX + w > window.innerWidth - pad) nextX = pointX - w - 28;
+            if (nextY + h > window.innerHeight - pad) nextY = window.innerHeight - pad - h;
+            targetX = Math.max(nextX, pad);
+            targetY = Math.max(nextY, pad);
+            if (!placed) {
+                x = targetX;
+                y = targetY;
+                placed = true;
+            }
+            if (!rafId) rafId = requestAnimationFrame(tick);
+        };
+
+        const show = (row) => {
+            preview.innerHTML = row.querySelector(".pd-detail").innerHTML;
+            preview.classList.add("is-on");
+        };
+
+        const hide = () => {
+            preview.classList.remove("is-on");
+            placed = false;
+        };
+
+        list.querySelectorAll(".pd-row").forEach((row) => {
+            row.addEventListener("pointerenter", (e) => {
+                if (e.pointerType !== "mouse" || !previewEnabled()) return;
+                show(row);
+                aim(e.clientX, e.clientY);
+            });
+            row.addEventListener("pointermove", (e) => {
+                if (e.pointerType !== "mouse" || !previewEnabled()) return;
+                aim(e.clientX, e.clientY);
+            });
+            // Keyboard: show the preview beside the focused row.
+            row.addEventListener("focusin", () => {
+                if (!previewEnabled()) return;
+                show(row);
+                const rect = row.getBoundingClientRect();
+                placed = false;
+                aim(rect.left + rect.width * 0.5, rect.bottom - 12);
+            });
+            row.addEventListener("focusout", hide);
+        });
+        list.addEventListener("pointerleave", hide);
+    }
+})();

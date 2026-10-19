@@ -843,115 +843,220 @@ header:not(.backToMain) {
   color: var(--accent-color);
 }
 
-.projects-container-3 h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
 .projects-container {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
 }
 
-.projects-container-span {
-  font-size: 16px;
-  color: var(--accent-color);
-}
-
-.projects-container-0,
-.projects-container-1 {
-  display: flex;
-  min-height: 260px;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 60px;
-}
-
-.projects-container-1 {
-  flex-direction: row-reverse;
-}
-
-.projects-container-2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 45%;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.projects-container-2 img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease-in-out;
-}
-
-.projects-container-0:hover .projects-container-2 img,
-.projects-container-1:hover .projects-container-2 img {
-  transform: scale(1.08);
-}
-
-.projects-container-3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: ubuntu;
-  color: var(--accent-color);
-  width: 45%;
-}
-
-.projects-container-3 p {
-  color: var(--text-color);
-}
-
-/* Category label above the project title, e.g. "Machine Learning" */
-.project-category {
-  align-self: flex-start;
-  margin-bottom: 10px;
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--accent-color);
-  background: var(--rail-accent-soft);
-  color: var(--accent-color);
-  font-family: monospace;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-}
-
-/* "Tech:" label followed by one pill per technology */
-.project-tech-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+/* Projects: plain index rows. On wide screens a card with the screenshot and
+   description follows the cursor (index.js); on phones it shows inline. */
+.pd-list {
   list-style: none;
-}
-
-.project-tag {
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  border-top: 1px solid var(--rail-line);
+  font-family: ubuntu, sans-serif;
   color: var(--text-color);
-  font-family: monospace;
-  font-size: 12px;
 }
 
-.light-mode .project-tag {
-  border-color: rgba(0, 0, 0, 0.1);
-  background: rgba(0, 0, 0, 0.05);
+.pd-row {
+  position: relative;
+  display: grid;
+  /* fixed last column, so every row's columns line up whether it has one link or two */
+  grid-template-columns: 40px minmax(0, 1.15fr) 140px minmax(0, 1.85fr) 140px;
+  align-items: center;
+  column-gap: 22px;
+  padding: 26px 14px;
+  border-bottom: 1px solid var(--rail-line);
+  transition: background 0.25s ease;
+}
+
+.pd-row:hover,
+.pd-row:focus-within {
+  background: linear-gradient(90deg, var(--rail-accent-soft), transparent 70%);
+}
+
+.pd-num {
+  font-family: "PT Mono", monospace;
+  font-size: 13px;
+  color: var(--accent-color);
+  opacity: 0.7;
+}
+
+.pd-name {
+  font-size: 22px;
+  font-weight: 700;
+  transition: color 0.25s ease;
+}
+
+.pd-row:hover .pd-name,
+.pd-row:focus-within .pd-name {
+  color: var(--accent-color);
+}
+
+/* The name link covers the whole row; Demo/Code sit above it */
+.pd-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pd-name a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* These are semi-transparent, which stacks them above the row-wide link;
+   let clicks fall through to it. */
+.pd-num,
+.pd-cat,
+.pd-tech {
+  pointer-events: none;
+}
+
+.pd-cat {
+  font-family: "PT Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.pd-tech {
+  overflow: hidden;
+  font-family: "PT Mono", monospace;
+  font-size: 12.5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 0.6;
+}
+
+.pd-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.pd-links a {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--text-color);
+  font-family: "PT Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.light-mode .pd-links a {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.pd-links a:hover,
+.pd-links a:focus-visible {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background: var(--rail-accent-soft);
+}
+
+/* Screenshot + description: floats by the cursor on wide screens (copied into
+   .pd-preview by index.js), shown inline on phones */
+.pd-detail {
+  display: none;
+}
+
+.pd-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  width: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--rail-surface);
+  box-shadow: 0 0 0 1px var(--rail-border), 0 18px 50px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  scale: 0.96;
+  pointer-events: none;
+  transition: opacity 0.2s ease, scale 0.2s ease;
+}
+
+.light-mode .pd-preview {
+  box-shadow: 0 0 0 1px var(--rail-border), 0 18px 50px rgba(31, 38, 135, 0.18);
+}
+
+.pd-preview.is-on {
+  opacity: 1;
+  scale: 1;
+}
+
+.pd-preview img,
+.pd-detail img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1891 / 978;
+  object-fit: cover;
+  object-position: top;
+}
+
+.pd-preview p {
+  padding: 12px 14px 14px;
+  font-family: ubuntu, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--text-color);
+}
+
+@media only screen and (max-width: 900px), (hover: none) {
+  .pd-row {
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: baseline;
+    row-gap: 10px;
+    padding: 24px 6px;
+  }
+
+  .pd-name {
+    font-size: 19px;
+  }
+
+  .pd-cat,
+  .pd-detail,
+  .pd-tech,
+  .pd-links {
+    grid-column: 2;
+  }
+
+  .pd-detail {
+    display: block;
+  }
+
+  .pd-detail img {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px var(--rail-border);
+  }
+
+  .pd-detail p {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .pd-tech {
+    white-space: normal;
+  }
+
+  .pd-links {
+    justify-content: flex-start;
+  }
+
+  .pd-preview {
+    display: none;
+  }
 }
 
 .more-projects {
@@ -1247,25 +1352,6 @@ a.vis-value:hover {
   backdrop-filter: blur(10px);
 }
 
-@media only screen and (max-width: 900px) {
-
-  .projects-container-1,
-  .projects-container-0 {
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .projects-container-2 {
-    width: 90%;
-  }
-
-  .projects-container-3 {
-    width: 90%;
-  }
-
-}
-
 @media only screen and (max-width: 750px) {
   /* Fixed height (15px padding + 20px nav margin + 60px bar + 10px padding)
      so the open menu overlays the page instead of pushing it down. Otherwise
@@ -1423,10 +1509,6 @@ a.vis-value:hover {
   .main-projects {
     height: auto;
     margin-top: 80px;
-  }
-
-  .projects-container-1 {
-    margin-top: 40px;
   }
 
   .projects-container {
